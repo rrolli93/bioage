@@ -57,7 +57,7 @@ export async function POST(req: NextRequest) {
         immuneAge: organScores.immuneAge,
         inflammatoryAge: organScores.inflammatoryAge,
         hematologicalAge: organScores.hematologicalAge,
-        rawInputs: inputs,
+        rawInputs: inputs as unknown as Record<string, number>,
       },
     });
 
