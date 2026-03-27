@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//Users/rafaelrolli/Desktop/**)",
+      "Bash(npx create-next-app@latest bioage --typescript --tailwind --app --no-git --eslint --no-src-dir --import-alias \"@/*\")",
+      "Bash(npx create-next-app@latest bioage --typescript --tailwind --app --no-git --eslint --no-src-dir --import-alias \"@/*\" --no-turbopack)",
+      "Bash(printf \"n\\\\nn\\\\n\")",
+      "Bash(printf \"n\\\\r\\\\nn\\\\r\\\\n\")",
+      "Bash(npx --yes create-next-app@latest bioage --typescript --tailwind --app --no-git --eslint --no-src-dir --import-alias \"@/*\")",
+      "Bash(yes n:*)"
+    ]
+  }
+}
