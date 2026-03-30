@@ -66,7 +66,7 @@ const EXAMPLE_VALUES: FormValues = {
 
 const ORGAN_COLORS = {
   metabolicAge:     { label: "Metabolic",     color: "#f4a261" },
-  immuneAge:        { label: "Immune",         color: "#00b8ac" },
+  immuneAge:        { label: "Immune",         color: "var(--accent)" },
   inflammatoryAge:  { label: "Inflammatory",   color: "#7b5ea7" },
   hematologicalAge: { label: "Hematological",  color: "#4cc9f0" },
 };
@@ -135,7 +135,7 @@ export default function CalculatePage() {
   }
 
   return (
-    <div className="min-h-screen" style={{ background: "#121e2b" }}>
+    <div className="min-h-screen" style={{ background: "var(--background)" }}>
       <Nav />
 
       <main className="max-w-3xl mx-auto px-6 py-10">
@@ -147,7 +147,7 @@ export default function CalculatePage() {
           >
             PhenoAge Calculator
           </h1>
-          <p style={{ color: "#626d86", fontFamily: "var(--font-inter)", fontSize: "13px" }}>
+          <p style={{ color: "var(--text-secondary)", fontFamily: "var(--font-inter)", fontSize: "13px" }}>
             Enter your standard bloodwork values to compute your biological age.
           </p>
         </div>
@@ -158,15 +158,15 @@ export default function CalculatePage() {
           style={{
             background: "#0d1a10",
             borderColor: "#1a3a22",
-            color: "#626d86",
+            color: "var(--text-secondary)",
             fontFamily: "var(--font-inter)",
             fontSize: "12px",
             lineHeight: "1.6",
           }}
         >
-          <span style={{ color: "#00b8ac", fontWeight: 600 }}>Note: </span>
+          <span style={{ color: "var(--accent)", fontWeight: 600 }}>Note: </span>
           For informational purposes only. Not medical advice. PhenoAge is a research tool based on{" "}
-          <span style={{ color: "#8895a7" }}>
+          <span style={{ color: "var(--text-muted)" }}>
             Levine ME et al. &ldquo;An epigenetic biomarker of aging for lifespan and healthspan.&rdquo;
             Aging (Albany NY). 2018. doi:10.18632/aging.101414
           </span>
@@ -176,12 +176,12 @@ export default function CalculatePage() {
         <form onSubmit={handleSubmit}>
           <div
             className="p-6 rounded-sm border mb-6"
-            style={{ background: "#1a2c3f", borderColor: "#223e6b" }}
+            style={{ background: "var(--card)", borderColor: "var(--border)" }}
           >
             <div className="flex justify-between items-center mb-6">
               <p
                 className="text-xs uppercase tracking-widest"
-                style={{ color: "#8895a7", fontFamily: "var(--font-inter)" }}
+                style={{ color: "var(--text-muted)", fontFamily: "var(--font-inter)" }}
               >
                 Bloodwork Inputs
               </p>
@@ -190,8 +190,8 @@ export default function CalculatePage() {
                 onClick={loadExample}
                 className="text-xs px-3 py-1 rounded-sm transition-opacity hover:opacity-70"
                 style={{
-                  background: "#223e6b",
-                  color: "#626d86",
+                  background: "var(--border)",
+                  color: "var(--text-secondary)",
                   fontFamily: "var(--font-inter)",
                 }}
               >
@@ -205,12 +205,12 @@ export default function CalculatePage() {
                   <label
                     htmlFor={key}
                     className="block text-xs mb-1.5"
-                    style={{ color: "#626d86", fontFamily: "var(--font-inter)" }}
+                    style={{ color: "var(--text-secondary)", fontFamily: "var(--font-inter)" }}
                   >
                     {label}
-                    <span style={{ color: "#a0aec0", marginLeft: "6px" }}>{unit}</span>
+                    <span style={{ color: "var(--text-muted)", marginLeft: "6px" }}>{unit}</span>
                     {normal !== "—" && (
-                      <span style={{ color: "#b0bdd0", marginLeft: "6px", fontSize: "10px" }}>
+                      <span style={{ color: "var(--text-muted)", marginLeft: "6px", fontSize: "10px" }}>
                         ref: {normal}
                       </span>
                     )}
@@ -223,11 +223,11 @@ export default function CalculatePage() {
                     value={values[key]}
                     onChange={(e) => handleChange(key, e.target.value)}
                     required
-                    className="w-full px-3 py-2 rounded-sm border text-sm outline-none transition-colors focus:border-[#00b8ac55]"
+                    className="w-full px-3 py-2 rounded-sm border text-sm outline-none transition-colors focus:border-[#C0392B55]"
                     style={{
-                      background: "#121e2b",
-                      borderColor: "#223e6b",
-                      color: "#ffffff",
+                      background: "var(--background)",
+                      borderColor: "var(--border)",
+                      color: "var(--foreground)",
                       fontFamily: "var(--font-inter)",
                     }}
                   />
@@ -255,7 +255,7 @@ export default function CalculatePage() {
             disabled={loading}
             className="w-full py-3 rounded-sm text-sm font-semibold transition-opacity hover:opacity-80 disabled:opacity-40"
             style={{
-              background: "#00b8ac",
+              background: "var(--accent)",
               color: "#000",
               fontFamily: "var(--font-inter)",
             }}
@@ -270,7 +270,7 @@ export default function CalculatePage() {
             {/* Hero result */}
             <div
               className="p-8 rounded-sm border mb-6 relative overflow-hidden"
-              style={{ background: "#1a2c3f", borderColor: "#223e6b" }}
+              style={{ background: "var(--card)", borderColor: "var(--border)" }}
             >
               {/* Background glow */}
               <div
@@ -278,7 +278,7 @@ export default function CalculatePage() {
                 style={{
                   background:
                     result.delta < 0
-                      ? "radial-gradient(ellipse at 50% 0%, #00b8ac11 0%, transparent 70%)"
+                      ? "radial-gradient(ellipse at 50% 0%, var(--accent-bg) 0%, transparent 70%)"
                       : "radial-gradient(ellipse at 50% 0%, #4a3aff11 0%, transparent 70%)",
                 }}
               />
@@ -286,7 +286,7 @@ export default function CalculatePage() {
               <div className="relative">
                 <p
                   className="text-xs uppercase tracking-widest mb-4"
-                  style={{ color: "#8895a7", fontFamily: "var(--font-inter)" }}
+                  style={{ color: "var(--text-muted)", fontFamily: "var(--font-inter)" }}
                 >
                   Your Biological Age
                 </p>
@@ -306,13 +306,13 @@ export default function CalculatePage() {
                   </p>
 
                   <div className="mb-2">
-                    <p style={{ color: "#8895a7", fontSize: "11px", fontFamily: "var(--font-inter)", textTransform: "uppercase", letterSpacing: "0.1em" }}>
+                    <p style={{ color: "var(--text-muted)", fontSize: "11px", fontFamily: "var(--font-inter)", textTransform: "uppercase", letterSpacing: "0.1em" }}>
                       Bio Age
                     </p>
-                    <p style={{ color: "#626d86", fontSize: "28px", fontFamily: "var(--font-inter)", fontWeight: "600", lineHeight: 1 }}>
+                    <p style={{ color: "var(--text-secondary)", fontSize: "28px", fontFamily: "var(--font-inter)", fontWeight: "600", lineHeight: 1 }}>
                       {result.chronologicalAge}
                     </p>
-                    <p style={{ color: "#a0aec0", fontSize: "10px", fontFamily: "var(--font-inter)", textTransform: "uppercase", letterSpacing: "0.1em" }}>
+                    <p style={{ color: "var(--text-muted)", fontSize: "10px", fontFamily: "var(--font-inter)", textTransform: "uppercase", letterSpacing: "0.1em" }}>
                       Chrono
                     </p>
                   </div>
@@ -321,16 +321,16 @@ export default function CalculatePage() {
                   <div
                     className="mb-3 px-4 py-2 rounded-sm"
                     style={{
-                      background: result.delta < 0 ? "#00b8ac1a" : "#1a1525",
-                      border: `1px solid ${result.delta < 0 ? "#00b8ac44" : "#4a3aff44"}`,
-                      boxShadow: result.delta < 0 ? "0 0 10px #00b8ac66" : "0 0 10px #4a3aff44",
+                      background: result.delta < 0 ? "var(--accent-bg)" : "#1a1525",
+                      border: `1px solid ${result.delta < 0 ? "var(--accent-glow)" : "#4a3aff44"}`,
+                      boxShadow: result.delta < 0 ? "0 0 10px var(--accent-glow)" : "0 0 10px #4a3aff44",
                     }}
                   >
                     <p
                       style={{
                         fontSize: "22px",
                         fontWeight: "700",
-                        color: result.delta < 0 ? "#00b8ac" : "#4a3aff",
+                        color: result.delta < 0 ? "var(--accent)" : "#4a3aff",
                         fontFamily: "var(--font-inter)",
                         lineHeight: 1,
                       }}
@@ -338,7 +338,7 @@ export default function CalculatePage() {
                       {result.delta < 0 ? "" : "+"}
                       {result.delta.toFixed(1)}
                     </p>
-                    <p style={{ fontSize: "9px", color: "#626d86", fontFamily: "var(--font-inter)", textAlign: "center", marginTop: "2px" }}>
+                    <p style={{ fontSize: "9px", color: "var(--text-secondary)", fontFamily: "var(--font-inter)", textAlign: "center", marginTop: "2px" }}>
                       yrs delta
                     </p>
                   </div>
@@ -347,15 +347,15 @@ export default function CalculatePage() {
                 {/* Status line */}
                 <div
                   className="flex items-center gap-2 px-4 py-2.5 rounded-sm"
-                  style={{ background: result.delta < 0 ? "#00b8ac1a" : "#1a1525" }}
+                  style={{ background: result.delta < 0 ? "var(--accent-bg)" : "#1a1525" }}
                 >
                   <span
                     className="w-2 h-2 rounded-full flex-shrink-0"
-                    style={{ background: result.delta < 0 ? "#00b8ac" : "#4a3aff" }}
+                    style={{ background: result.delta < 0 ? "var(--accent)" : "#4a3aff" }}
                   />
                   <p
                     style={{
-                      color: result.delta < 0 ? "#00b8ac" : "#4a3aff",
+                      color: result.delta < 0 ? "var(--accent)" : "#4a3aff",
                       fontSize: "13px",
                       fontFamily: "var(--font-inter)",
                     }}
@@ -371,11 +371,11 @@ export default function CalculatePage() {
             {/* Organ breakdown */}
             <div
               className="p-6 rounded-sm border mb-6"
-              style={{ background: "#1a2c3f", borderColor: "#223e6b" }}
+              style={{ background: "var(--card)", borderColor: "var(--border)" }}
             >
               <p
                 className="text-xs uppercase tracking-widest mb-6"
-                style={{ color: "#8895a7", fontFamily: "var(--font-inter)" }}
+                style={{ color: "var(--text-muted)", fontFamily: "var(--font-inter)" }}
               >
                 Organ System Breakdown
               </p>
@@ -392,7 +392,7 @@ export default function CalculatePage() {
 
               <p
                 className="mt-4 text-xs"
-                style={{ color: "#a0aec0", fontFamily: "var(--font-inter)" }}
+                style={{ color: "var(--text-muted)", fontFamily: "var(--font-inter)" }}
               >
                 Sub-scores are derived from z-scores vs age-adjusted population norms (NHANES).
                 The white marker on each bar represents your chronological age.
@@ -404,14 +404,14 @@ export default function CalculatePage() {
               <Link
                 href="/card"
                 className="px-5 py-2.5 rounded-sm text-sm font-medium transition-opacity hover:opacity-80"
-                style={{ background: "#00b8ac", color: "#000", fontFamily: "var(--font-inter)" }}
+                style={{ background: "var(--accent)", color: "#000", fontFamily: "var(--font-inter)" }}
               >
                 Generate Share Card →
               </Link>
               <button
                 onClick={() => { setResult(null); window.scrollTo({ top: 0, behavior: "smooth" }); }}
                 className="px-5 py-2.5 rounded-sm text-sm border transition-colors"
-                style={{ background: "transparent", color: "#8895a7", borderColor: "#223e6b", fontFamily: "var(--font-inter)" }}
+                style={{ background: "transparent", color: "var(--text-muted)", borderColor: "var(--border)", fontFamily: "var(--font-inter)" }}
               >
                 Recalculate
               </button>
