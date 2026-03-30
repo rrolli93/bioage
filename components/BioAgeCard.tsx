@@ -51,7 +51,7 @@ const BioAgeCard = forwardRef<HTMLDivElement, BioAgeCardProps>(function BioAgeCa
         border: "1px solid #1e1e1e",
         borderRadius: "12px",
         padding: "28px",
-        fontFamily: "var(--font-syne), system-ui, sans-serif",
+        fontFamily: "var(--font-playfair), serif",
         color: "#ffffff",
       }}
     >
@@ -64,7 +64,7 @@ const BioAgeCard = forwardRef<HTMLDivElement, BioAgeCardProps>(function BioAgeCa
               color: "#888",
               letterSpacing: "0.15em",
               textTransform: "uppercase",
-              fontFamily: "var(--font-dm-mono)",
+              fontFamily: "var(--font-playfair)",
               marginBottom: "2px",
             }}
           >
@@ -74,7 +74,7 @@ const BioAgeCard = forwardRef<HTMLDivElement, BioAgeCardProps>(function BioAgeCa
             style={{
               fontSize: "10px",
               color: "#444",
-              fontFamily: "var(--font-dm-mono)",
+              fontFamily: "var(--font-playfair)",
               letterSpacing: "0.1em",
             }}
           >
@@ -97,7 +97,7 @@ const BioAgeCard = forwardRef<HTMLDivElement, BioAgeCardProps>(function BioAgeCa
               fontSize: "18px",
               fontWeight: "700",
               color: isYounger ? "#52b788" : "#ff4d6d",
-              fontFamily: "var(--font-dm-mono)",
+              fontFamily: "var(--font-playfair)",
               lineHeight: 1,
             }}
           >
@@ -108,7 +108,7 @@ const BioAgeCard = forwardRef<HTMLDivElement, BioAgeCardProps>(function BioAgeCa
             style={{
               fontSize: "9px",
               color: "#666",
-              fontFamily: "var(--font-dm-mono)",
+              fontFamily: "var(--font-playfair)",
               textAlign: "center",
               marginTop: "2px",
             }}
@@ -125,7 +125,7 @@ const BioAgeCard = forwardRef<HTMLDivElement, BioAgeCardProps>(function BioAgeCa
             fontSize: "80px",
             fontWeight: "800",
             lineHeight: 1,
-            fontFamily: "var(--font-syne)",
+            fontFamily: "var(--font-playfair)",
             letterSpacing: "-0.03em",
             color: "#ffffff",
           }}
@@ -133,13 +133,13 @@ const BioAgeCard = forwardRef<HTMLDivElement, BioAgeCardProps>(function BioAgeCa
           {phenoAge.toFixed(1)}
         </p>
         <div className="mb-3">
-          <p style={{ fontSize: "12px", color: "#555", fontFamily: "var(--font-dm-mono)" }}>
+          <p style={{ fontSize: "12px", color: "#555", fontFamily: "var(--font-playfair)" }}>
             BIO AGE
           </p>
-          <p style={{ fontSize: "20px", color: "#666", fontFamily: "var(--font-syne)", fontWeight: "600" }}>
+          <p style={{ fontSize: "20px", color: "#666", fontFamily: "var(--font-playfair)", fontWeight: "600" }}>
             {chronoAge.toFixed(0)}
           </p>
-          <p style={{ fontSize: "10px", color: "#444", fontFamily: "var(--font-dm-mono)" }}>
+          <p style={{ fontSize: "10px", color: "#444", fontFamily: "var(--font-playfair)" }}>
             CHRONO
           </p>
         </div>
@@ -158,7 +158,7 @@ const BioAgeCard = forwardRef<HTMLDivElement, BioAgeCardProps>(function BioAgeCa
           style={{
             fontSize: "12px",
             color: isYounger ? "#52b788" : "#ff4d6d",
-            fontFamily: "var(--font-dm-mono)",
+            fontFamily: "var(--font-playfair)",
           }}
         >
           Aging {absDelta} years {isYounger ? "slower" : "faster"} than chronological
@@ -173,7 +173,7 @@ const BioAgeCard = forwardRef<HTMLDivElement, BioAgeCardProps>(function BioAgeCa
             color: "#444",
             letterSpacing: "0.15em",
             textTransform: "uppercase",
-            fontFamily: "var(--font-dm-mono)",
+            fontFamily: "var(--font-playfair)",
             marginBottom: "12px",
           }}
         >
@@ -195,7 +195,7 @@ const BioAgeCard = forwardRef<HTMLDivElement, BioAgeCardProps>(function BioAgeCa
               color: "#444",
               letterSpacing: "0.15em",
               textTransform: "uppercase",
-              fontFamily: "var(--font-dm-mono)",
+              fontFamily: "var(--font-playfair)",
               marginBottom: "10px",
             }}
           >
@@ -224,7 +224,7 @@ const BioAgeCard = forwardRef<HTMLDivElement, BioAgeCardProps>(function BioAgeCa
             fontSize: "9px",
             color: "#333",
             letterSpacing: "0.2em",
-            fontFamily: "var(--font-dm-mono)",
+            fontFamily: "var(--font-playfair)",
             textAlign: "center",
           }}
         >

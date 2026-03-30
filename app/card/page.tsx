@@ -134,16 +134,16 @@ export default function CardPage() {
       <main className="max-w-4xl mx-auto px-6 py-10">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold mb-2" style={{ fontFamily: "var(--font-syne)" }}>
+          <h1 className="text-3xl font-bold mb-2" style={{ fontFamily: "var(--font-playfair)" }}>
             Shareable Card
           </h1>
-          <p style={{ color: "#666", fontFamily: "var(--font-dm-mono)", fontSize: "13px" }}>
+          <p style={{ color: "#666", fontFamily: "var(--font-playfair)", fontSize: "13px" }}>
             Generate a shareable BioAge report card from your latest score.
           </p>
         </div>
 
         {loading ? (
-          <p style={{ color: "#444", fontFamily: "var(--font-dm-mono)", fontSize: "13px" }}>
+          <p style={{ color: "#444", fontFamily: "var(--font-playfair)", fontSize: "13px" }}>
             Loading...
           </p>
         ) : !cardData ? (
@@ -152,16 +152,16 @@ export default function CardPage() {
             className="p-8 rounded-sm border text-center"
             style={{ background: "#111111", borderColor: "#1e1e1e" }}
           >
-            <p className="text-lg font-semibold mb-2" style={{ fontFamily: "var(--font-syne)" }}>
+            <p className="text-lg font-semibold mb-2" style={{ fontFamily: "var(--font-playfair)" }}>
               No scores yet
             </p>
-            <p className="text-sm mb-5" style={{ color: "#666", fontFamily: "var(--font-dm-mono)" }}>
+            <p className="text-sm mb-5" style={{ color: "#666", fontFamily: "var(--font-playfair)" }}>
               You need at least one biological age calculation to generate a card.
             </p>
             <Link
               href="/calculate"
               className="inline-block px-5 py-2.5 rounded-sm text-sm font-medium"
-              style={{ background: "#52b788", color: "#000", fontFamily: "var(--font-dm-mono)" }}
+              style={{ background: "#52b788", color: "#000", fontFamily: "var(--font-playfair)" }}
             >
               Calculate Bio Age →
             </Link>
@@ -175,7 +175,7 @@ export default function CardPage() {
                 <div className="mb-4">
                   <label
                     className="block text-xs mb-1.5"
-                    style={{ color: "#888", fontFamily: "var(--font-dm-mono)" }}
+                    style={{ color: "#888", fontFamily: "var(--font-playfair)" }}
                   >
                     Select score
                   </label>
@@ -187,7 +187,7 @@ export default function CardPage() {
                       background: "#111111",
                       borderColor: "#2a2a2a",
                       color: "#fff",
-                      fontFamily: "var(--font-dm-mono)",
+                      fontFamily: "var(--font-playfair)",
                     }}
                   >
                     {entries.map((e) => (
@@ -216,7 +216,7 @@ export default function CardPage() {
               >
                 <p
                   className="text-xs uppercase tracking-widest mb-4"
-                  style={{ color: "#555", fontFamily: "var(--font-dm-mono)" }}
+                  style={{ color: "#555", fontFamily: "var(--font-playfair)" }}
                 >
                   Export
                 </p>
@@ -226,7 +226,7 @@ export default function CardPage() {
                     onClick={handleDownload}
                     disabled={downloading}
                     className="w-full py-2.5 px-4 rounded-sm text-sm font-medium transition-opacity hover:opacity-80 disabled:opacity-40"
-                    style={{ background: "#52b788", color: "#000", fontFamily: "var(--font-dm-mono)" }}
+                    style={{ background: "#52b788", color: "#000", fontFamily: "var(--font-playfair)" }}
                   >
                     {downloading ? "Rendering..." : "Download PNG"}
                   </button>
@@ -239,7 +239,7 @@ export default function CardPage() {
                         background: "transparent",
                         color: "#aaa",
                         borderColor: "#2a2a2a",
-                        fontFamily: "var(--font-dm-mono)",
+                        fontFamily: "var(--font-playfair)",
                       }}
                     >
                       Share
@@ -255,7 +255,7 @@ export default function CardPage() {
               >
                 <p
                   className="text-xs uppercase tracking-widest mb-3"
-                  style={{ color: "#555", fontFamily: "var(--font-dm-mono)" }}
+                  style={{ color: "#555", fontFamily: "var(--font-playfair)" }}
                 >
                   Summary
                 </p>
@@ -271,7 +271,7 @@ export default function CardPage() {
                 ].map(({ label, value, color }) => (
                   <div key={label} className="flex justify-between mb-2">
                     <span
-                      style={{ color: "#555", fontSize: "12px", fontFamily: "var(--font-dm-mono)" }}
+                      style={{ color: "#555", fontSize: "12px", fontFamily: "var(--font-playfair)" }}
                     >
                       {label}
                     </span>
@@ -279,7 +279,7 @@ export default function CardPage() {
                       style={{
                         color: color ?? "#fff",
                         fontSize: "12px",
-                        fontFamily: "var(--font-dm-mono)",
+                        fontFamily: "var(--font-playfair)",
                         fontWeight: "600",
                       }}
                     >

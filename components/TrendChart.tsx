@@ -45,7 +45,7 @@ function CustomTooltip({
       style={{
         background: "#111111",
         borderColor: "#1e1e1e",
-        fontFamily: "var(--font-dm-mono)",
+        fontFamily: "var(--font-playfair)",
       }}
     >
       <p className="text-gray-400 mb-2">{label}</p>
@@ -66,7 +66,7 @@ export default function TrendChart({ data }: TrendChartProps) {
         style={{
           borderColor: "#1e1e1e",
           color: "#444",
-          fontFamily: "var(--font-dm-mono)",
+          fontFamily: "var(--font-playfair)",
         }}
       >
         No data yet — calculate your first score
@@ -89,12 +89,12 @@ export default function TrendChart({ data }: TrendChartProps) {
         <CartesianGrid strokeDasharray="3 3" stroke="#1e1e1e" />
         <XAxis
           dataKey="label"
-          tick={{ fill: "#555", fontSize: 11, fontFamily: "var(--font-dm-mono)" }}
+          tick={{ fill: "#555", fontSize: 11, fontFamily: "var(--font-playfair)" }}
           axisLine={{ stroke: "#1e1e1e" }}
           tickLine={false}
         />
         <YAxis
-          tick={{ fill: "#555", fontSize: 11, fontFamily: "var(--font-dm-mono)" }}
+          tick={{ fill: "#555", fontSize: 11, fontFamily: "var(--font-playfair)" }}
           axisLine={false}
           tickLine={false}
           domain={["auto", "auto"]}

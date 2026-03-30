@@ -22,13 +22,13 @@ export default function Nav() {
       <Link href="/" className="flex items-center gap-2">
         <span
           className="text-xl font-bold tracking-tight"
-          style={{ fontFamily: "var(--font-syne)", color: "#52b788" }}
+          style={{ fontFamily: "var(--font-playfair)", color: "#52b788" }}
         >
           BIO
         </span>
         <span
           className="text-xl font-bold tracking-tight"
-          style={{ fontFamily: "var(--font-syne)", color: "#ffffff" }}
+          style={{ fontFamily: "var(--font-playfair)", color: "#ffffff" }}
         >
           AGE
         </span>
@@ -37,7 +37,7 @@ export default function Nav() {
           style={{
             background: "#0d2b1f",
             color: "#52b788",
-            fontFamily: "var(--font-dm-mono)",
+            fontFamily: "var(--font-playfair)",
             fontSize: "9px",
             letterSpacing: "0.1em",
           }}
@@ -56,7 +56,7 @@ export default function Nav() {
               href={href}
               className="px-3 py-1.5 text-sm rounded-sm transition-colors"
               style={{
-                fontFamily: "var(--font-dm-mono)",
+                fontFamily: "var(--font-playfair)",
                 background: active ? "#1e1e1e" : "transparent",
                 color: active ? "#ffffff" : "#666",
               }}

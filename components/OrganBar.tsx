@@ -31,21 +31,21 @@ export default function OrganBar({ label, organAge, chronoAge, color }: OrganBar
       <div className="flex justify-between items-center mb-1">
         <span
           className="text-xs uppercase tracking-widest"
-          style={{ color: "#888888", fontFamily: "var(--font-dm-mono)" }}
+          style={{ color: "#888888", fontFamily: "var(--font-playfair)" }}
         >
           {label}
         </span>
         <div className="flex items-center gap-2">
           <span
             className="text-sm font-medium"
-            style={{ fontFamily: "var(--font-dm-mono)", color }}
+            style={{ fontFamily: "var(--font-playfair)", color }}
           >
             {organAge.toFixed(1)}
           </span>
           <span
             className={`text-xs px-1.5 py-0.5 rounded`}
             style={{
-              fontFamily: "var(--font-dm-mono)",
+              fontFamily: "var(--font-playfair)",
               background: isOlder ? "#2d1010" : "#0d2b1f",
               color: isOlder ? "#ff4d6d" : "#52b788",
             }}
@@ -85,7 +85,7 @@ export default function OrganBar({ label, organAge, chronoAge, color }: OrganBar
       {/* Age scale labels */}
       <div
         className="flex justify-between mt-0.5 text-xs"
-        style={{ color: "#444", fontFamily: "var(--font-dm-mono)" }}
+        style={{ color: "#444", fontFamily: "var(--font-playfair)" }}
       >
         <span>0</span>
         <span style={{ color: "#555" }}>chrono: {chronoAge}</span>

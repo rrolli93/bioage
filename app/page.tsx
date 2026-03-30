@@ -67,18 +67,18 @@ export default function Dashboard() {
         <div className="mb-10">
           <h1
             className="text-3xl font-bold mb-2"
-            style={{ fontFamily: "var(--font-syne)" }}
+            style={{ fontFamily: "var(--font-playfair)" }}
           >
             Dashboard
           </h1>
-          <p style={{ color: "#666", fontFamily: "var(--font-dm-mono)", fontSize: "13px" }}>
+          <p style={{ color: "#666", fontFamily: "var(--font-playfair)", fontSize: "13px" }}>
             Biological age tracking &amp; protocol management
           </p>
         </div>
 
         {loading ? (
           <div className="flex items-center justify-center h-40">
-            <p style={{ color: "#444", fontFamily: "var(--font-dm-mono)", fontSize: "13px" }}>
+            <p style={{ color: "#444", fontFamily: "var(--font-playfair)", fontSize: "13px" }}>
               Loading...
             </p>
           </div>
@@ -95,18 +95,18 @@ export default function Dashboard() {
                   >
                     <p
                       className="text-xs uppercase tracking-widest mb-2"
-                      style={{ color: "#555", fontFamily: "var(--font-dm-mono)" }}
+                      style={{ color: "#555", fontFamily: "var(--font-playfair)" }}
                     >
                       Latest Bio Age
                     </p>
                     <p
                       className="text-5xl font-bold mb-1"
-                      style={{ fontFamily: "var(--font-syne)" }}
+                      style={{ fontFamily: "var(--font-playfair)" }}
                     >
                       {latest.phenoAge.toFixed(1)}
                     </p>
                     <div className="flex items-center gap-2 mt-2">
-                      <span style={{ color: "#555", fontSize: "13px", fontFamily: "var(--font-dm-mono)" }}>
+                      <span style={{ color: "#555", fontSize: "13px", fontFamily: "var(--font-playfair)" }}>
                         chrono {latest.chronoAge.toFixed(0)}
                       </span>
                       <span
@@ -114,7 +114,7 @@ export default function Dashboard() {
                         style={{
                           background: latest.delta < 0 ? "#0d2b1f" : "#2d1010",
                           color: latest.delta < 0 ? "#52b788" : "#ff4d6d",
-                          fontFamily: "var(--font-dm-mono)",
+                          fontFamily: "var(--font-playfair)",
                           boxShadow: latest.delta < 0 ? "0 0 10px #52b78866" : "none",
                         }}
                       >
@@ -124,7 +124,7 @@ export default function Dashboard() {
                     </div>
                     <p
                       className="text-xs mt-2"
-                      style={{ color: "#444", fontFamily: "var(--font-dm-mono)" }}
+                      style={{ color: "#444", fontFamily: "var(--font-playfair)" }}
                     >
                       {new Date(latest.date).toLocaleDateString("en-US", {
                         month: "long",
@@ -141,7 +141,7 @@ export default function Dashboard() {
                   >
                     <p
                       className="text-xs uppercase tracking-widest mb-4"
-                      style={{ color: "#555", fontFamily: "var(--font-dm-mono)" }}
+                      style={{ color: "#555", fontFamily: "var(--font-playfair)" }}
                     >
                       Organ Sub-Scores
                     </p>
@@ -155,10 +155,10 @@ export default function Dashboard() {
                         <div key={label} className="flex items-center gap-3">
                           <span className="w-2 h-2 rounded-full" style={{ background: color }} />
                           <div>
-                            <p style={{ color: "#555", fontSize: "10px", fontFamily: "var(--font-dm-mono)", textTransform: "uppercase", letterSpacing: "0.1em" }}>
+                            <p style={{ color: "#555", fontSize: "10px", fontFamily: "var(--font-playfair)", textTransform: "uppercase", letterSpacing: "0.1em" }}>
                               {label}
                             </p>
-                            <p style={{ color, fontSize: "18px", fontFamily: "var(--font-syne)", fontWeight: "600" }}>
+                            <p style={{ color, fontSize: "18px", fontFamily: "var(--font-playfair)", fontWeight: "600" }}>
                               {value != null ? value.toFixed(1) : "—"}
                             </p>
                           </div>
@@ -175,13 +175,13 @@ export default function Dashboard() {
                 >
                   <p
                     className="text-lg font-semibold mb-2"
-                    style={{ fontFamily: "var(--font-syne)" }}
+                    style={{ fontFamily: "var(--font-playfair)" }}
                   >
                     No scores yet
                   </p>
                   <p
                     className="text-sm mb-5"
-                    style={{ color: "#666", fontFamily: "var(--font-dm-mono)" }}
+                    style={{ color: "#666", fontFamily: "var(--font-playfair)" }}
                   >
                     Calculate your first biological age score from your bloodwork.
                   </p>
@@ -191,7 +191,7 @@ export default function Dashboard() {
                     style={{
                       background: "#52b788",
                       color: "#000",
-                      fontFamily: "var(--font-dm-mono)",
+                      fontFamily: "var(--font-playfair)",
                     }}
                   >
                     Calculate Bio Age →
@@ -208,7 +208,7 @@ export default function Dashboard() {
               <div className="flex justify-between items-center mb-4">
                 <p
                   className="text-xs uppercase tracking-widest"
-                  style={{ color: "#555", fontFamily: "var(--font-dm-mono)" }}
+                  style={{ color: "#555", fontFamily: "var(--font-playfair)" }}
                 >
                   Bio Age Trend
                 </p>
@@ -218,7 +218,7 @@ export default function Dashboard() {
                   style={{
                     background: "#0d2b1f",
                     color: "#52b788",
-                    fontFamily: "var(--font-dm-mono)",
+                    fontFamily: "var(--font-playfair)",
                     border: "1px solid #52b78822",
                   }}
                 >
@@ -236,21 +236,21 @@ export default function Dashboard() {
               <div className="flex justify-between items-center mb-4">
                 <p
                   className="text-xs uppercase tracking-widest"
-                  style={{ color: "#555", fontFamily: "var(--font-dm-mono)" }}
+                  style={{ color: "#555", fontFamily: "var(--font-playfair)" }}
                 >
                   Active Protocols ({activeProtocols.length})
                 </p>
                 <Link
                   href="/protocol"
                   className="text-xs"
-                  style={{ color: "#52b788", fontFamily: "var(--font-dm-mono)" }}
+                  style={{ color: "#52b788", fontFamily: "var(--font-playfair)" }}
                 >
                   Manage →
                 </Link>
               </div>
 
               {activeProtocols.length === 0 ? (
-                <p style={{ color: "#444", fontSize: "13px", fontFamily: "var(--font-dm-mono)" }}>
+                <p style={{ color: "#444", fontSize: "13px", fontFamily: "var(--font-playfair)" }}>
                   No active protocols.{" "}
                   <Link href="/protocol" style={{ color: "#52b788" }}>
                     Add one →
@@ -278,7 +278,7 @@ export default function Dashboard() {
                 style={{
                   background: "#52b788",
                   color: "#000",
-                  fontFamily: "var(--font-dm-mono)",
+                  fontFamily: "var(--font-playfair)",
                 }}
               >
                 Calculate New Score
@@ -290,7 +290,7 @@ export default function Dashboard() {
                   background: "transparent",
                   color: "#aaa",
                   borderColor: "#2a2a2a",
-                  fontFamily: "var(--font-dm-mono)",
+                  fontFamily: "var(--font-playfair)",
                 }}
               >
                 Generate Card

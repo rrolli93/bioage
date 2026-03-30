@@ -39,7 +39,7 @@ export default function ProtocolPill({
         background: active ? "#111111" : "#0a0a0a",
         borderColor: active ? color + "44" : "#1e1e1e",
         opacity: active ? 1 : 0.5,
-        fontFamily: "var(--font-dm-mono)",
+        fontFamily: "var(--font-playfair)",
       }}
     >
       {/* Color dot */}

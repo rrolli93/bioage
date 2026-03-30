@@ -1,17 +1,11 @@
 import type { Metadata } from "next";
-import { Syne, DM_Mono } from "next/font/google";
+import { Playfair_Display } from "next/font/google";
 import "./globals.css";
 
-const syne = Syne({
-  variable: "--font-syne",
+const playfairDisplay = Playfair_Display({
+  variable: "--font-playfair",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-});
-
-const dmMono = DM_Mono({
-  variable: "--font-dm-mono",
-  subsets: ["latin"],
-  weight: ["300", "400", "500"],
+  weight: ["400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
@@ -28,7 +22,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${syne.variable} ${dmMono.variable} h-full`}
+      className={`${playfairDisplay.variable} h-full`}
     >
       <body className="min-h-full bg-[#0a0a0a] text-white antialiased">
         {children}
