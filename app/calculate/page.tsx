@@ -66,7 +66,7 @@ const EXAMPLE_VALUES: FormValues = {
 
 const ORGAN_COLORS = {
   metabolicAge:     { label: "Metabolic",     color: "#f4a261" },
-  immuneAge:        { label: "Immune",         color: "#52b788" },
+  immuneAge:        { label: "Immune",         color: "#00b8ac" },
   inflammatoryAge:  { label: "Inflammatory",   color: "#7b5ea7" },
   hematologicalAge: { label: "Hematological",  color: "#4cc9f0" },
 };
@@ -135,7 +135,7 @@ export default function CalculatePage() {
   }
 
   return (
-    <div className="min-h-screen" style={{ background: "#0a0a0a" }}>
+    <div className="min-h-screen" style={{ background: "#121e2b" }}>
       <Nav />
 
       <main className="max-w-3xl mx-auto px-6 py-10">
@@ -143,11 +143,11 @@ export default function CalculatePage() {
         <div className="mb-8">
           <h1
             className="text-3xl font-bold mb-2"
-            style={{ fontFamily: "var(--font-syne)" }}
+            style={{ fontFamily: "var(--font-inter)" }}
           >
             PhenoAge Calculator
           </h1>
-          <p style={{ color: "#666", fontFamily: "var(--font-dm-mono)", fontSize: "13px" }}>
+          <p style={{ color: "#626d86", fontFamily: "var(--font-inter)", fontSize: "13px" }}>
             Enter your standard bloodwork values to compute your biological age.
           </p>
         </div>
@@ -158,15 +158,15 @@ export default function CalculatePage() {
           style={{
             background: "#0d1a10",
             borderColor: "#1a3a22",
-            color: "#888",
-            fontFamily: "var(--font-dm-mono)",
+            color: "#626d86",
+            fontFamily: "var(--font-inter)",
             fontSize: "12px",
             lineHeight: "1.6",
           }}
         >
-          <span style={{ color: "#52b788", fontWeight: 600 }}>Note: </span>
+          <span style={{ color: "#00b8ac", fontWeight: 600 }}>Note: </span>
           For informational purposes only. Not medical advice. PhenoAge is a research tool based on{" "}
-          <span style={{ color: "#aaa" }}>
+          <span style={{ color: "#8895a7" }}>
             Levine ME et al. &ldquo;An epigenetic biomarker of aging for lifespan and healthspan.&rdquo;
             Aging (Albany NY). 2018. doi:10.18632/aging.101414
           </span>
@@ -176,12 +176,12 @@ export default function CalculatePage() {
         <form onSubmit={handleSubmit}>
           <div
             className="p-6 rounded-sm border mb-6"
-            style={{ background: "#111111", borderColor: "#1e1e1e" }}
+            style={{ background: "#1a2c3f", borderColor: "#223e6b" }}
           >
             <div className="flex justify-between items-center mb-6">
               <p
                 className="text-xs uppercase tracking-widest"
-                style={{ color: "#555", fontFamily: "var(--font-dm-mono)" }}
+                style={{ color: "#8895a7", fontFamily: "var(--font-inter)" }}
               >
                 Bloodwork Inputs
               </p>
@@ -190,9 +190,9 @@ export default function CalculatePage() {
                 onClick={loadExample}
                 className="text-xs px-3 py-1 rounded-sm transition-opacity hover:opacity-70"
                 style={{
-                  background: "#1e1e1e",
-                  color: "#888",
-                  fontFamily: "var(--font-dm-mono)",
+                  background: "#223e6b",
+                  color: "#626d86",
+                  fontFamily: "var(--font-inter)",
                 }}
               >
                 Load example values
@@ -205,12 +205,12 @@ export default function CalculatePage() {
                   <label
                     htmlFor={key}
                     className="block text-xs mb-1.5"
-                    style={{ color: "#888", fontFamily: "var(--font-dm-mono)" }}
+                    style={{ color: "#626d86", fontFamily: "var(--font-inter)" }}
                   >
                     {label}
-                    <span style={{ color: "#444", marginLeft: "6px" }}>{unit}</span>
+                    <span style={{ color: "#a0aec0", marginLeft: "6px" }}>{unit}</span>
                     {normal !== "—" && (
-                      <span style={{ color: "#333", marginLeft: "6px", fontSize: "10px" }}>
+                      <span style={{ color: "#b0bdd0", marginLeft: "6px", fontSize: "10px" }}>
                         ref: {normal}
                       </span>
                     )}
@@ -223,12 +223,12 @@ export default function CalculatePage() {
                     value={values[key]}
                     onChange={(e) => handleChange(key, e.target.value)}
                     required
-                    className="w-full px-3 py-2 rounded-sm border text-sm outline-none transition-colors focus:border-[#52b78855]"
+                    className="w-full px-3 py-2 rounded-sm border text-sm outline-none transition-colors focus:border-[#00b8ac55]"
                     style={{
-                      background: "#0a0a0a",
-                      borderColor: "#2a2a2a",
+                      background: "#121e2b",
+                      borderColor: "#223e6b",
                       color: "#ffffff",
-                      fontFamily: "var(--font-dm-mono)",
+                      fontFamily: "var(--font-inter)",
                     }}
                   />
                 </div>
@@ -240,10 +240,10 @@ export default function CalculatePage() {
             <div
               className="mb-4 p-3 rounded-sm border text-sm"
               style={{
-                background: "#1a0808",
+                background: "#1a1525",
                 borderColor: "#3a1010",
-                color: "#ff4d6d",
-                fontFamily: "var(--font-dm-mono)",
+                color: "#4a3aff",
+                fontFamily: "var(--font-inter)",
               }}
             >
               {error}
@@ -255,9 +255,9 @@ export default function CalculatePage() {
             disabled={loading}
             className="w-full py-3 rounded-sm text-sm font-semibold transition-opacity hover:opacity-80 disabled:opacity-40"
             style={{
-              background: "#52b788",
+              background: "#00b8ac",
               color: "#000",
-              fontFamily: "var(--font-dm-mono)",
+              fontFamily: "var(--font-inter)",
             }}
           >
             {loading ? "Computing..." : "Calculate Biological Age →"}
@@ -270,7 +270,7 @@ export default function CalculatePage() {
             {/* Hero result */}
             <div
               className="p-8 rounded-sm border mb-6 relative overflow-hidden"
-              style={{ background: "#111111", borderColor: "#1e1e1e" }}
+              style={{ background: "#1a2c3f", borderColor: "#223e6b" }}
             >
               {/* Background glow */}
               <div
@@ -278,15 +278,15 @@ export default function CalculatePage() {
                 style={{
                   background:
                     result.delta < 0
-                      ? "radial-gradient(ellipse at 50% 0%, #52b78811 0%, transparent 70%)"
-                      : "radial-gradient(ellipse at 50% 0%, #ff4d6d11 0%, transparent 70%)",
+                      ? "radial-gradient(ellipse at 50% 0%, #00b8ac11 0%, transparent 70%)"
+                      : "radial-gradient(ellipse at 50% 0%, #4a3aff11 0%, transparent 70%)",
                 }}
               />
 
               <div className="relative">
                 <p
                   className="text-xs uppercase tracking-widest mb-4"
-                  style={{ color: "#555", fontFamily: "var(--font-dm-mono)" }}
+                  style={{ color: "#8895a7", fontFamily: "var(--font-inter)" }}
                 >
                   Your Biological Age
                 </p>
@@ -298,7 +298,7 @@ export default function CalculatePage() {
                       fontSize: "80px",
                       fontWeight: "800",
                       lineHeight: 1,
-                      fontFamily: "var(--font-syne)",
+                      fontFamily: "var(--font-inter)",
                       letterSpacing: "-0.03em",
                     }}
                   >
@@ -306,13 +306,13 @@ export default function CalculatePage() {
                   </p>
 
                   <div className="mb-2">
-                    <p style={{ color: "#555", fontSize: "11px", fontFamily: "var(--font-dm-mono)", textTransform: "uppercase", letterSpacing: "0.1em" }}>
+                    <p style={{ color: "#8895a7", fontSize: "11px", fontFamily: "var(--font-inter)", textTransform: "uppercase", letterSpacing: "0.1em" }}>
                       Bio Age
                     </p>
-                    <p style={{ color: "#666", fontSize: "28px", fontFamily: "var(--font-syne)", fontWeight: "600", lineHeight: 1 }}>
+                    <p style={{ color: "#626d86", fontSize: "28px", fontFamily: "var(--font-inter)", fontWeight: "600", lineHeight: 1 }}>
                       {result.chronologicalAge}
                     </p>
-                    <p style={{ color: "#444", fontSize: "10px", fontFamily: "var(--font-dm-mono)", textTransform: "uppercase", letterSpacing: "0.1em" }}>
+                    <p style={{ color: "#a0aec0", fontSize: "10px", fontFamily: "var(--font-inter)", textTransform: "uppercase", letterSpacing: "0.1em" }}>
                       Chrono
                     </p>
                   </div>
@@ -321,24 +321,24 @@ export default function CalculatePage() {
                   <div
                     className="mb-3 px-4 py-2 rounded-sm"
                     style={{
-                      background: result.delta < 0 ? "#0d2b1f" : "#2d1010",
-                      border: `1px solid ${result.delta < 0 ? "#52b78844" : "#ff4d6d44"}`,
-                      boxShadow: result.delta < 0 ? "0 0 10px #52b78866" : "0 0 10px #ff4d6d44",
+                      background: result.delta < 0 ? "#00b8ac1a" : "#1a1525",
+                      border: `1px solid ${result.delta < 0 ? "#00b8ac44" : "#4a3aff44"}`,
+                      boxShadow: result.delta < 0 ? "0 0 10px #00b8ac66" : "0 0 10px #4a3aff44",
                     }}
                   >
                     <p
                       style={{
                         fontSize: "22px",
                         fontWeight: "700",
-                        color: result.delta < 0 ? "#52b788" : "#ff4d6d",
-                        fontFamily: "var(--font-dm-mono)",
+                        color: result.delta < 0 ? "#00b8ac" : "#4a3aff",
+                        fontFamily: "var(--font-inter)",
                         lineHeight: 1,
                       }}
                     >
                       {result.delta < 0 ? "" : "+"}
                       {result.delta.toFixed(1)}
                     </p>
-                    <p style={{ fontSize: "9px", color: "#666", fontFamily: "var(--font-dm-mono)", textAlign: "center", marginTop: "2px" }}>
+                    <p style={{ fontSize: "9px", color: "#626d86", fontFamily: "var(--font-inter)", textAlign: "center", marginTop: "2px" }}>
                       yrs delta
                     </p>
                   </div>
@@ -347,17 +347,17 @@ export default function CalculatePage() {
                 {/* Status line */}
                 <div
                   className="flex items-center gap-2 px-4 py-2.5 rounded-sm"
-                  style={{ background: result.delta < 0 ? "#0d2b1f" : "#1a0808" }}
+                  style={{ background: result.delta < 0 ? "#00b8ac1a" : "#1a1525" }}
                 >
                   <span
                     className="w-2 h-2 rounded-full flex-shrink-0"
-                    style={{ background: result.delta < 0 ? "#52b788" : "#ff4d6d" }}
+                    style={{ background: result.delta < 0 ? "#00b8ac" : "#4a3aff" }}
                   />
                   <p
                     style={{
-                      color: result.delta < 0 ? "#52b788" : "#ff4d6d",
+                      color: result.delta < 0 ? "#00b8ac" : "#4a3aff",
                       fontSize: "13px",
-                      fontFamily: "var(--font-dm-mono)",
+                      fontFamily: "var(--font-inter)",
                     }}
                   >
                     Aging{" "}
@@ -371,11 +371,11 @@ export default function CalculatePage() {
             {/* Organ breakdown */}
             <div
               className="p-6 rounded-sm border mb-6"
-              style={{ background: "#111111", borderColor: "#1e1e1e" }}
+              style={{ background: "#1a2c3f", borderColor: "#223e6b" }}
             >
               <p
                 className="text-xs uppercase tracking-widest mb-6"
-                style={{ color: "#555", fontFamily: "var(--font-dm-mono)" }}
+                style={{ color: "#8895a7", fontFamily: "var(--font-inter)" }}
               >
                 Organ System Breakdown
               </p>
@@ -392,7 +392,7 @@ export default function CalculatePage() {
 
               <p
                 className="mt-4 text-xs"
-                style={{ color: "#444", fontFamily: "var(--font-dm-mono)" }}
+                style={{ color: "#a0aec0", fontFamily: "var(--font-inter)" }}
               >
                 Sub-scores are derived from z-scores vs age-adjusted population norms (NHANES).
                 The white marker on each bar represents your chronological age.
@@ -404,14 +404,14 @@ export default function CalculatePage() {
               <Link
                 href="/card"
                 className="px-5 py-2.5 rounded-sm text-sm font-medium transition-opacity hover:opacity-80"
-                style={{ background: "#52b788", color: "#000", fontFamily: "var(--font-dm-mono)" }}
+                style={{ background: "#00b8ac", color: "#000", fontFamily: "var(--font-inter)" }}
               >
                 Generate Share Card →
               </Link>
               <button
                 onClick={() => { setResult(null); window.scrollTo({ top: 0, behavior: "smooth" }); }}
                 className="px-5 py-2.5 rounded-sm text-sm border transition-colors"
-                style={{ background: "transparent", color: "#aaa", borderColor: "#2a2a2a", fontFamily: "var(--font-dm-mono)" }}
+                style={{ background: "transparent", color: "#8895a7", borderColor: "#223e6b", fontFamily: "var(--font-inter)" }}
               >
                 Recalculate
               </button>

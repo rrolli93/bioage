@@ -31,23 +31,23 @@ export default function OrganBar({ label, organAge, chronoAge, color }: OrganBar
       <div className="flex justify-between items-center mb-1">
         <span
           className="text-xs uppercase tracking-widest"
-          style={{ color: "#888888", fontFamily: "var(--font-dm-mono)" }}
+          style={{ color: "#626d86", fontFamily: "var(--font-inter)" }}
         >
           {label}
         </span>
         <div className="flex items-center gap-2">
           <span
             className="text-sm font-medium"
-            style={{ fontFamily: "var(--font-dm-mono)", color }}
+            style={{ fontFamily: "var(--font-inter)", color }}
           >
             {organAge.toFixed(1)}
           </span>
           <span
             className={`text-xs px-1.5 py-0.5 rounded`}
             style={{
-              fontFamily: "var(--font-dm-mono)",
-              background: isOlder ? "#2d1010" : "#0d2b1f",
-              color: isOlder ? "#ff4d6d" : "#52b788",
+              fontFamily: "var(--font-inter)",
+              background: isOlder ? "#1a1525" : "#00b8ac1a",
+              color: isOlder ? "#4a3aff" : "#00b8ac",
             }}
           >
             {isOlder ? "+" : ""}
@@ -59,7 +59,7 @@ export default function OrganBar({ label, organAge, chronoAge, color }: OrganBar
       {/* Bar track */}
       <div
         className="relative h-2 rounded-sm overflow-hidden"
-        style={{ background: "#1e1e1e" }}
+        style={{ background: "#223e6b" }}
       >
         {/* Organ age bar */}
         <div
@@ -85,10 +85,10 @@ export default function OrganBar({ label, organAge, chronoAge, color }: OrganBar
       {/* Age scale labels */}
       <div
         className="flex justify-between mt-0.5 text-xs"
-        style={{ color: "#444", fontFamily: "var(--font-dm-mono)" }}
+        style={{ color: "#a0aec0", fontFamily: "var(--font-inter)" }}
       >
         <span>0</span>
-        <span style={{ color: "#555" }}>chrono: {chronoAge}</span>
+        <span style={{ color: "#8895a7" }}>chrono: {chronoAge}</span>
         <span>{MAX_AGE}</span>
       </div>
     </div>

@@ -149,23 +149,23 @@ export default function ProtocolPage() {
   const compounds = PROTOCOL_CATEGORIES[form.category] ?? [];
 
   return (
-    <div className="min-h-screen" style={{ background: "#0a0a0a" }}>
+    <div className="min-h-screen" style={{ background: "#121e2b" }}>
       <Nav />
       <main className="max-w-3xl mx-auto px-6 py-10">
         {/* Header */}
         <div className="flex justify-between items-start mb-8">
           <div>
-            <h1 className="text-3xl font-bold mb-2" style={{ fontFamily: "var(--font-syne)" }}>
+            <h1 className="text-3xl font-bold mb-2" style={{ fontFamily: "var(--font-inter)" }}>
               Protocol Logger
             </h1>
-            <p style={{ color: "#666", fontFamily: "var(--font-dm-mono)", fontSize: "13px" }}>
+            <p style={{ color: "#626d86", fontFamily: "var(--font-inter)", fontSize: "13px" }}>
               Log and track your active longevity interventions.
             </p>
           </div>
           <button
             onClick={() => setShowForm((v) => !v)}
             className="px-4 py-2 rounded-sm text-sm font-medium transition-opacity hover:opacity-80"
-            style={{ background: "#52b788", color: "#000", fontFamily: "var(--font-dm-mono)" }}
+            style={{ background: "#00b8ac", color: "#000", fontFamily: "var(--font-inter)" }}
           >
             {showForm ? "Cancel" : "+ Add Protocol"}
           </button>
@@ -176,11 +176,11 @@ export default function ProtocolPage() {
           <form
             onSubmit={handleSubmit}
             className="p-6 rounded-sm border mb-8"
-            style={{ background: "#111111", borderColor: "#1e1e1e" }}
+            style={{ background: "#1a2c3f", borderColor: "#223e6b" }}
           >
             <p
               className="text-xs uppercase tracking-widest mb-6"
-              style={{ color: "#555", fontFamily: "var(--font-dm-mono)" }}
+              style={{ color: "#8895a7", fontFamily: "var(--font-inter)" }}
             >
               New Protocol Entry
             </p>
@@ -188,14 +188,14 @@ export default function ProtocolPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {/* Category */}
               <div className="sm:col-span-2">
-                <label className="block text-xs mb-1.5" style={{ color: "#888", fontFamily: "var(--font-dm-mono)" }}>
+                <label className="block text-xs mb-1.5" style={{ color: "#626d86", fontFamily: "var(--font-inter)" }}>
                   Category
                 </label>
                 <select
                   value={form.category}
                   onChange={(e) => handleCategoryChange(e.target.value)}
                   className="w-full px-3 py-2 rounded-sm border text-sm outline-none"
-                  style={{ background: "#0a0a0a", borderColor: "#2a2a2a", color: "#fff", fontFamily: "var(--font-dm-mono)" }}
+                  style={{ background: "#121e2b", borderColor: "#223e6b", color: "#fff", fontFamily: "var(--font-inter)" }}
                 >
                   {Object.keys(PROTOCOL_CATEGORIES).map((c) => (
                     <option key={c} value={c}>{c}</option>
@@ -205,14 +205,14 @@ export default function ProtocolPage() {
 
               {/* Compound */}
               <div className={form.compound === "Custom" ? "" : "sm:col-span-2"}>
-                <label className="block text-xs mb-1.5" style={{ color: "#888", fontFamily: "var(--font-dm-mono)" }}>
+                <label className="block text-xs mb-1.5" style={{ color: "#626d86", fontFamily: "var(--font-inter)" }}>
                   Compound
                 </label>
                 <select
                   value={form.compound}
                   onChange={(e) => handleCompoundChange(e.target.value)}
                   className="w-full px-3 py-2 rounded-sm border text-sm outline-none"
-                  style={{ background: "#0a0a0a", borderColor: "#2a2a2a", color: form.compound ? "#fff" : "#555", fontFamily: "var(--font-dm-mono)" }}
+                  style={{ background: "#121e2b", borderColor: "#223e6b", color: form.compound ? "#fff" : "#8895a7", fontFamily: "var(--font-inter)" }}
                 >
                   <option value="">— Select compound —</option>
                   {compounds.map((c) => (
@@ -224,7 +224,7 @@ export default function ProtocolPage() {
               {/* Custom compound name */}
               {form.compound === "Custom" && (
                 <div>
-                  <label className="block text-xs mb-1.5" style={{ color: "#888", fontFamily: "var(--font-dm-mono)" }}>
+                  <label className="block text-xs mb-1.5" style={{ color: "#626d86", fontFamily: "var(--font-inter)" }}>
                     Custom Name
                   </label>
                   <input
@@ -233,14 +233,14 @@ export default function ProtocolPage() {
                     onChange={(e) => setCustomCompound(e.target.value)}
                     placeholder="Enter compound name"
                     className="w-full px-3 py-2 rounded-sm border text-sm outline-none"
-                    style={{ background: "#0a0a0a", borderColor: "#2a2a2a", color: "#fff", fontFamily: "var(--font-dm-mono)" }}
+                    style={{ background: "#121e2b", borderColor: "#223e6b", color: "#fff", fontFamily: "var(--font-inter)" }}
                   />
                 </div>
               )}
 
               {/* Dose */}
               <div>
-                <label className="block text-xs mb-1.5" style={{ color: "#888", fontFamily: "var(--font-dm-mono)" }}>
+                <label className="block text-xs mb-1.5" style={{ color: "#626d86", fontFamily: "var(--font-inter)" }}>
                   Dose
                 </label>
                 <input
@@ -250,20 +250,20 @@ export default function ProtocolPage() {
                   placeholder="e.g. 10mg/day, 250mcg EOD"
                   required
                   className="w-full px-3 py-2 rounded-sm border text-sm outline-none"
-                  style={{ background: "#0a0a0a", borderColor: "#2a2a2a", color: "#fff", fontFamily: "var(--font-dm-mono)" }}
+                  style={{ background: "#121e2b", borderColor: "#223e6b", color: "#fff", fontFamily: "var(--font-inter)" }}
                 />
               </div>
 
               {/* Route */}
               <div>
-                <label className="block text-xs mb-1.5" style={{ color: "#888", fontFamily: "var(--font-dm-mono)" }}>
+                <label className="block text-xs mb-1.5" style={{ color: "#626d86", fontFamily: "var(--font-inter)" }}>
                   Route
                 </label>
                 <select
                   value={form.route}
                   onChange={(e) => setForm((f) => ({ ...f, route: e.target.value }))}
                   className="w-full px-3 py-2 rounded-sm border text-sm outline-none"
-                  style={{ background: "#0a0a0a", borderColor: "#2a2a2a", color: "#fff", fontFamily: "var(--font-dm-mono)" }}
+                  style={{ background: "#121e2b", borderColor: "#223e6b", color: "#fff", fontFamily: "var(--font-inter)" }}
                 >
                   {ROUTES.map((r) => (
                     <option key={r} value={r}>{r}</option>
@@ -273,7 +273,7 @@ export default function ProtocolPage() {
 
               {/* Start date */}
               <div>
-                <label className="block text-xs mb-1.5" style={{ color: "#888", fontFamily: "var(--font-dm-mono)" }}>
+                <label className="block text-xs mb-1.5" style={{ color: "#626d86", fontFamily: "var(--font-inter)" }}>
                   Start Date
                 </label>
                 <input
@@ -282,15 +282,15 @@ export default function ProtocolPage() {
                   onChange={(e) => setForm((f) => ({ ...f, startDate: e.target.value }))}
                   required
                   className="w-full px-3 py-2 rounded-sm border text-sm outline-none"
-                  style={{ background: "#0a0a0a", borderColor: "#2a2a2a", color: "#fff", fontFamily: "var(--font-dm-mono)" }}
+                  style={{ background: "#121e2b", borderColor: "#223e6b", color: "#fff", fontFamily: "var(--font-inter)" }}
                 />
               </div>
 
               {/* Source */}
               <div>
-                <label className="block text-xs mb-1.5" style={{ color: "#888", fontFamily: "var(--font-dm-mono)" }}>
+                <label className="block text-xs mb-1.5" style={{ color: "#626d86", fontFamily: "var(--font-inter)" }}>
                   Source / Vendor{" "}
-                  <span style={{ color: "#444" }}>(optional)</span>
+                  <span style={{ color: "#a0aec0" }}>(optional)</span>
                 </label>
                 <input
                   type="text"
@@ -298,15 +298,15 @@ export default function ProtocolPage() {
                   onChange={(e) => setForm((f) => ({ ...f, source: e.target.value }))}
                   placeholder="e.g. Peptide Sciences, batch #42"
                   className="w-full px-3 py-2 rounded-sm border text-sm outline-none"
-                  style={{ background: "#0a0a0a", borderColor: "#2a2a2a", color: "#fff", fontFamily: "var(--font-dm-mono)" }}
+                  style={{ background: "#121e2b", borderColor: "#223e6b", color: "#fff", fontFamily: "var(--font-inter)" }}
                 />
               </div>
 
               {/* Notes */}
               <div className="sm:col-span-2">
-                <label className="block text-xs mb-1.5" style={{ color: "#888", fontFamily: "var(--font-dm-mono)" }}>
+                <label className="block text-xs mb-1.5" style={{ color: "#626d86", fontFamily: "var(--font-inter)" }}>
                   Notes{" "}
-                  <span style={{ color: "#444" }}>(optional)</span>
+                  <span style={{ color: "#a0aec0" }}>(optional)</span>
                 </label>
                 <textarea
                   value={form.notes}
@@ -314,13 +314,13 @@ export default function ProtocolPage() {
                   placeholder="Protocol notes, observations, cycle info..."
                   rows={3}
                   className="w-full px-3 py-2 rounded-sm border text-sm outline-none resize-none"
-                  style={{ background: "#0a0a0a", borderColor: "#2a2a2a", color: "#fff", fontFamily: "var(--font-dm-mono)" }}
+                  style={{ background: "#121e2b", borderColor: "#223e6b", color: "#fff", fontFamily: "var(--font-inter)" }}
                 />
               </div>
             </div>
 
             {formError && (
-              <p className="mt-3 text-sm" style={{ color: "#ff4d6d", fontFamily: "var(--font-dm-mono)" }}>
+              <p className="mt-3 text-sm" style={{ color: "#4a3aff", fontFamily: "var(--font-inter)" }}>
                 {formError}
               </p>
             )}
@@ -330,7 +330,7 @@ export default function ProtocolPage() {
                 type="submit"
                 disabled={submitting}
                 className="px-5 py-2.5 rounded-sm text-sm font-medium transition-opacity hover:opacity-80 disabled:opacity-40"
-                style={{ background: "#52b788", color: "#000", fontFamily: "var(--font-dm-mono)" }}
+                style={{ background: "#00b8ac", color: "#000", fontFamily: "var(--font-inter)" }}
               >
                 {submitting ? "Saving..." : "Save Protocol"}
               </button>
@@ -338,7 +338,7 @@ export default function ProtocolPage() {
                 type="button"
                 onClick={() => { setShowForm(false); setFormError(null); }}
                 className="px-5 py-2.5 rounded-sm text-sm border"
-                style={{ background: "transparent", color: "#888", borderColor: "#2a2a2a", fontFamily: "var(--font-dm-mono)" }}
+                style={{ background: "transparent", color: "#626d86", borderColor: "#223e6b", fontFamily: "var(--font-inter)" }}
               >
                 Cancel
               </button>
@@ -347,7 +347,7 @@ export default function ProtocolPage() {
         )}
 
         {loading ? (
-          <p style={{ color: "#444", fontFamily: "var(--font-dm-mono)", fontSize: "13px" }}>
+          <p style={{ color: "#a0aec0", fontFamily: "var(--font-inter)", fontSize: "13px" }}>
             Loading...
           </p>
         ) : (
@@ -355,17 +355,17 @@ export default function ProtocolPage() {
             {/* Active protocols */}
             <div
               className="p-6 rounded-sm border mb-6"
-              style={{ background: "#111111", borderColor: "#1e1e1e" }}
+              style={{ background: "#1a2c3f", borderColor: "#223e6b" }}
             >
               <p
                 className="text-xs uppercase tracking-widest mb-5"
-                style={{ color: "#555", fontFamily: "var(--font-dm-mono)" }}
+                style={{ color: "#8895a7", fontFamily: "var(--font-inter)" }}
               >
                 Active ({active.length})
               </p>
 
               {active.length === 0 ? (
-                <p style={{ color: "#444", fontSize: "13px", fontFamily: "var(--font-dm-mono)" }}>
+                <p style={{ color: "#a0aec0", fontSize: "13px", fontFamily: "var(--font-inter)" }}>
                   No active protocols.
                 </p>
               ) : (
@@ -390,7 +390,7 @@ export default function ProtocolPage() {
               >
                 <p
                   className="text-xs uppercase tracking-widest mb-5"
-                  style={{ color: "#333", fontFamily: "var(--font-dm-mono)" }}
+                  style={{ color: "#b0bdd0", fontFamily: "var(--font-inter)" }}
                 >
                   History ({inactive.length})
                 </p>
@@ -435,7 +435,7 @@ function ProtocolRow({
           active={entry.active}
         />
         <div className="min-w-0">
-          <p style={{ color: "#555", fontSize: "11px", fontFamily: "var(--font-dm-mono)" }}>
+          <p style={{ color: "#8895a7", fontSize: "11px", fontFamily: "var(--font-inter)" }}>
             {entry.category} · {entry.route} · started{" "}
             {new Date(entry.startDate).toLocaleDateString("en-US", {
               month: "short",
@@ -444,14 +444,14 @@ function ProtocolRow({
             })}
           </p>
           {entry.source && (
-            <p style={{ color: "#444", fontSize: "10px", fontFamily: "var(--font-dm-mono)" }}>
+            <p style={{ color: "#a0aec0", fontSize: "10px", fontFamily: "var(--font-inter)" }}>
               {entry.source}
             </p>
           )}
           {entry.notes && (
             <p
               className="mt-1 text-xs truncate max-w-xs"
-              style={{ color: "#555", fontFamily: "var(--font-dm-mono)" }}
+              style={{ color: "#8895a7", fontFamily: "var(--font-inter)" }}
             >
               {entry.notes}
             </p>
@@ -464,9 +464,9 @@ function ProtocolRow({
           onClick={onToggle}
           className="text-xs px-2 py-1 rounded-sm transition-opacity hover:opacity-70"
           style={{
-            background: entry.active ? "#0d2b1f" : "#1e1e1e",
-            color: entry.active ? "#52b788" : "#555",
-            fontFamily: "var(--font-dm-mono)",
+            background: entry.active ? "#00b8ac1a" : "#223e6b",
+            color: entry.active ? "#00b8ac" : "#8895a7",
+            fontFamily: "var(--font-inter)",
           }}
         >
           {entry.active ? "Active" : "Inactive"}
@@ -474,7 +474,7 @@ function ProtocolRow({
         <button
           onClick={onDelete}
           className="text-xs px-2 py-1 rounded-sm transition-opacity hover:opacity-70"
-          style={{ background: "#1a0808", color: "#ff4d6d66", fontFamily: "var(--font-dm-mono)" }}
+          style={{ background: "#1a1525", color: "#4a3aff66", fontFamily: "var(--font-inter)" }}
         >
           ×
         </button>
