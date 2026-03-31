@@ -107,38 +107,40 @@ export default function Dashboard() {
             </p>
           </div>
 
-          {/* Streak badge */}
-          {streak > 0 && (
-            <div
-              className="flex items-center gap-2 px-4 py-2 rounded-sm border"
-              style={{
-                background: "var(--accent-bg)",
-                borderColor: "var(--accent)",
-                boxShadow: "0 0 12px var(--accent-glow)",
-              }}
-            >
-              <span style={{ fontSize: "22px", lineHeight: 1 }}>🔥</span>
-              <div>
-                <p
-                  className="text-xl font-bold leading-none"
-                  style={{ color: "var(--accent)", fontFamily: "var(--font-inter)" }}
-                >
-                  {streak}
-                </p>
-                <p
-                  style={{
-                    color: "var(--text-muted)",
-                    fontSize: "10px",
-                    fontFamily: "var(--font-inter)",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.08em",
-                  }}
-                >
-                  day streak
-                </p>
-              </div>
+          {/* Streak badge — always visible */}
+          <div
+            className="flex items-center gap-2 px-4 py-2 rounded-sm border"
+            style={{
+              background: streak > 0 ? "var(--accent-bg)" : "var(--card)",
+              borderColor: streak > 0 ? "var(--accent)" : "var(--border)",
+              boxShadow: streak > 0 ? "0 0 12px var(--accent-glow)" : "none",
+              opacity: streak > 0 ? 1 : 0.6,
+            }}
+          >
+            <span style={{ fontSize: "22px", lineHeight: 1 }}>🔥</span>
+            <div>
+              <p
+                className="text-xl font-bold leading-none"
+                style={{
+                  color: streak > 0 ? "var(--accent)" : "var(--text-muted)",
+                  fontFamily: "var(--font-inter)",
+                }}
+              >
+                {streak}
+              </p>
+              <p
+                style={{
+                  color: "var(--text-muted)",
+                  fontSize: "10px",
+                  fontFamily: "var(--font-inter)",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.08em",
+                }}
+              >
+                day streak
+              </p>
             </div>
-          )}
+          </div>
         </div>
 
         {loading ? (
