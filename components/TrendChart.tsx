@@ -43,8 +43,8 @@ function CustomTooltip({
     <div
       className="p-3 rounded-sm border text-xs"
       style={{
-        background: "#1a2c3f",
-        borderColor: "#223e6b",
+        background: "var(--card)",
+        borderColor: "var(--border)",
         fontFamily: "var(--font-inter)",
       }}
     >
@@ -64,8 +64,8 @@ export default function TrendChart({ data }: TrendChartProps) {
       <div
         className="flex items-center justify-center h-40 rounded-sm border text-sm"
         style={{
-          borderColor: "#223e6b",
-          color: "#a0aec0",
+          borderColor: "var(--border)",
+          color: "var(--text-muted)",
           fontFamily: "var(--font-inter)",
         }}
       >
@@ -86,15 +86,15 @@ export default function TrendChart({ data }: TrendChartProps) {
   return (
     <ResponsiveContainer width="100%" height={220}>
       <LineChart data={formatted} margin={{ top: 10, right: 20, left: -20, bottom: 0 }}>
-        <CartesianGrid strokeDasharray="3 3" stroke="#223e6b" />
+        <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
         <XAxis
           dataKey="label"
-          tick={{ fill: "#8895a7", fontSize: 11, fontFamily: "var(--font-inter)" }}
-          axisLine={{ stroke: "#223e6b" }}
+          tick={{ fill: "var(--text-muted)", fontSize: 11, fontFamily: "var(--font-inter)" }}
+          axisLine={{ stroke: "var(--border)" }}
           tickLine={false}
         />
         <YAxis
-          tick={{ fill: "#8895a7", fontSize: 11, fontFamily: "var(--font-inter)" }}
+          tick={{ fill: "var(--text-muted)", fontSize: 11, fontFamily: "var(--font-inter)" }}
           axisLine={false}
           tickLine={false}
           domain={["auto", "auto"]}
@@ -105,7 +105,7 @@ export default function TrendChart({ data }: TrendChartProps) {
         <Line
           type="monotone"
           dataKey="chronoAge"
-          stroke="#b0bdd0"
+          stroke="var(--text-muted)"
           strokeWidth={1}
           strokeDasharray="4 4"
           dot={false}
@@ -116,10 +116,10 @@ export default function TrendChart({ data }: TrendChartProps) {
         <Line
           type="monotone"
           dataKey="phenoAge"
-          stroke="#00b8ac"
+          stroke="var(--accent)"
           strokeWidth={2}
-          dot={{ fill: "#00b8ac", r: 4, strokeWidth: 0 }}
-          activeDot={{ r: 6, fill: "#00b8ac" }}
+          dot={{ fill: "var(--accent)", r: 4, strokeWidth: 0 }}
+          activeDot={{ r: 6, fill: "var(--accent)" }}
           name="Bio Age"
         />
       </LineChart>

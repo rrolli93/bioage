@@ -31,7 +31,7 @@ export default function OrganBar({ label, organAge, chronoAge, color }: OrganBar
       <div className="flex justify-between items-center mb-1">
         <span
           className="text-xs uppercase tracking-widest"
-          style={{ color: "#626d86", fontFamily: "var(--font-inter)" }}
+          style={{ color: "var(--text-secondary)", fontFamily: "var(--font-inter)" }}
         >
           {label}
         </span>
@@ -46,8 +46,8 @@ export default function OrganBar({ label, organAge, chronoAge, color }: OrganBar
             className={`text-xs px-1.5 py-0.5 rounded`}
             style={{
               fontFamily: "var(--font-inter)",
-              background: isOlder ? "#1a1525" : "#00b8ac1a",
-              color: isOlder ? "#4a3aff" : "#00b8ac",
+              background: isOlder ? "#1a1525" : "var(--accent-bg)",
+              color: isOlder ? "#4a3aff" : "var(--accent)",
             }}
           >
             {isOlder ? "+" : ""}
@@ -59,7 +59,7 @@ export default function OrganBar({ label, organAge, chronoAge, color }: OrganBar
       {/* Bar track */}
       <div
         className="relative h-2 rounded-sm overflow-hidden"
-        style={{ background: "#223e6b" }}
+        style={{ background: "var(--border)" }}
       >
         {/* Organ age bar */}
         <div
@@ -85,10 +85,10 @@ export default function OrganBar({ label, organAge, chronoAge, color }: OrganBar
       {/* Age scale labels */}
       <div
         className="flex justify-between mt-0.5 text-xs"
-        style={{ color: "#a0aec0", fontFamily: "var(--font-inter)" }}
+        style={{ color: "var(--text-muted)", fontFamily: "var(--font-inter)" }}
       >
         <span>0</span>
-        <span style={{ color: "#8895a7" }}>chrono: {chronoAge}</span>
+        <span style={{ color: "var(--text-muted)" }}>chrono: {chronoAge}</span>
         <span>{MAX_AGE}</span>
       </div>
     </div>

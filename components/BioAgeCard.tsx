@@ -24,7 +24,7 @@ interface BioAgeCardProps {
 
 const ORGAN_COLORS = {
   metabolic: "#f4a261",
-  immune: "#00b8ac",
+  immune: "var(--accent)",
   inflammatory: "#7b5ea7",
   hematological: "#4cc9f0",
 };
@@ -47,12 +47,12 @@ const BioAgeCard = forwardRef<HTMLDivElement, BioAgeCardProps>(function BioAgeCa
       ref={ref}
       style={{
         width: "420px",
-        background: "#1a2c3f",
-        border: "1px solid #223e6b",
+        background: "var(--card)",
+        border: "1px solid var(--border)",
         borderRadius: "12px",
         padding: "28px",
         fontFamily: "var(--font-inter), system-ui, sans-serif",
-        color: "#ffffff",
+        color: "var(--foreground)",
       }}
     >
       {/* Header */}
@@ -61,7 +61,7 @@ const BioAgeCard = forwardRef<HTMLDivElement, BioAgeCardProps>(function BioAgeCa
           <p
             style={{
               fontSize: "11px",
-              color: "#626d86",
+              color: "var(--text-secondary)",
               letterSpacing: "0.15em",
               textTransform: "uppercase",
               fontFamily: "var(--font-inter)",
@@ -73,7 +73,7 @@ const BioAgeCard = forwardRef<HTMLDivElement, BioAgeCardProps>(function BioAgeCa
           <p
             style={{
               fontSize: "10px",
-              color: "#a0aec0",
+              color: "var(--text-muted)",
               fontFamily: "var(--font-inter)",
               letterSpacing: "0.1em",
             }}
@@ -85,18 +85,18 @@ const BioAgeCard = forwardRef<HTMLDivElement, BioAgeCardProps>(function BioAgeCa
         {/* Delta badge */}
         <div
           style={{
-            background: isYounger ? "#00b8ac1a" : "#1a1525",
-            border: `1px solid ${isYounger ? "#00b8ac44" : "#4a3aff44"}`,
+            background: isYounger ? "var(--accent-bg)" : "#1a1525",
+            border: `1px solid ${isYounger ? "var(--accent-glow)" : "#4a3aff44"}`,
             borderRadius: "6px",
             padding: "6px 10px",
-            boxShadow: isYounger ? "0 0 10px #00b8ac66" : "0 0 10px #4a3aff44",
+            boxShadow: isYounger ? "0 0 10px var(--accent-glow)" : "0 0 10px #4a3aff44",
           }}
         >
           <p
             style={{
               fontSize: "18px",
               fontWeight: "700",
-              color: isYounger ? "#00b8ac" : "#4a3aff",
+              color: isYounger ? "var(--accent)" : "#4a3aff",
               fontFamily: "var(--font-inter)",
               lineHeight: 1,
             }}
@@ -107,7 +107,7 @@ const BioAgeCard = forwardRef<HTMLDivElement, BioAgeCardProps>(function BioAgeCa
           <p
             style={{
               fontSize: "9px",
-              color: "#626d86",
+              color: "var(--text-secondary)",
               fontFamily: "var(--font-inter)",
               textAlign: "center",
               marginTop: "2px",
@@ -127,19 +127,19 @@ const BioAgeCard = forwardRef<HTMLDivElement, BioAgeCardProps>(function BioAgeCa
             lineHeight: 1,
             fontFamily: "var(--font-inter)",
             letterSpacing: "-0.03em",
-            color: "#ffffff",
+            color: "var(--foreground)",
           }}
         >
           {phenoAge.toFixed(1)}
         </p>
         <div className="mb-3">
-          <p style={{ fontSize: "12px", color: "#8895a7", fontFamily: "var(--font-inter)" }}>
+          <p style={{ fontSize: "12px", color: "var(--text-muted)", fontFamily: "var(--font-inter)" }}>
             BIO AGE
           </p>
-          <p style={{ fontSize: "20px", color: "#626d86", fontFamily: "var(--font-inter)", fontWeight: "600" }}>
+          <p style={{ fontSize: "20px", color: "var(--text-secondary)", fontFamily: "var(--font-inter)", fontWeight: "600" }}>
             {chronoAge.toFixed(0)}
           </p>
-          <p style={{ fontSize: "10px", color: "#a0aec0", fontFamily: "var(--font-inter)" }}>
+          <p style={{ fontSize: "10px", color: "var(--text-muted)", fontFamily: "var(--font-inter)" }}>
             CHRONO
           </p>
         </div>
@@ -148,16 +148,16 @@ const BioAgeCard = forwardRef<HTMLDivElement, BioAgeCardProps>(function BioAgeCa
       {/* Status bar */}
       <div
         className="flex items-center gap-2 mb-6 px-3 py-2 rounded-sm"
-        style={{ background: isYounger ? "#00b8ac1a" : "#1a0a0a" }}
+        style={{ background: isYounger ? "var(--accent-bg)" : "#1a0a0a" }}
       >
         <span
           className="w-2 h-2 rounded-full flex-shrink-0"
-          style={{ background: isYounger ? "#00b8ac" : "#4a3aff" }}
+          style={{ background: isYounger ? "var(--accent)" : "#4a3aff" }}
         />
         <p
           style={{
             fontSize: "12px",
-            color: isYounger ? "#00b8ac" : "#4a3aff",
+            color: isYounger ? "var(--accent)" : "#4a3aff",
             fontFamily: "var(--font-inter)",
           }}
         >
@@ -170,7 +170,7 @@ const BioAgeCard = forwardRef<HTMLDivElement, BioAgeCardProps>(function BioAgeCa
         <p
           style={{
             fontSize: "10px",
-            color: "#a0aec0",
+            color: "var(--text-muted)",
             letterSpacing: "0.15em",
             textTransform: "uppercase",
             fontFamily: "var(--font-inter)",
@@ -192,7 +192,7 @@ const BioAgeCard = forwardRef<HTMLDivElement, BioAgeCardProps>(function BioAgeCa
           <p
             style={{
               fontSize: "10px",
-              color: "#a0aec0",
+              color: "var(--text-muted)",
               letterSpacing: "0.15em",
               textTransform: "uppercase",
               fontFamily: "var(--font-inter)",
@@ -217,12 +217,12 @@ const BioAgeCard = forwardRef<HTMLDivElement, BioAgeCardProps>(function BioAgeCa
       {/* Watermark */}
       <div
         className="pt-4"
-        style={{ borderTop: "1px solid #223e6b" }}
+        style={{ borderTop: "1px solid var(--border)" }}
       >
         <p
           style={{
             fontSize: "9px",
-            color: "#b0bdd0",
+            color: "var(--text-muted)",
             letterSpacing: "0.2em",
             fontFamily: "var(--font-inter)",
             textAlign: "center",

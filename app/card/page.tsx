@@ -81,7 +81,7 @@ export default function CardPage() {
       // Dynamically import html2canvas to avoid SSR issues
       const html2canvas = (await import("html2canvas")).default;
       const canvas = await html2canvas(cardRef.current, {
-        backgroundColor: "#1a2c3f",
+        backgroundColor: "var(--card)",
         scale: 2,
         useCORS: true,
         logging: false,
@@ -104,7 +104,7 @@ export default function CardPage() {
     try {
       const html2canvas = (await import("html2canvas")).default;
       const canvas = await html2canvas(cardRef.current, {
-        backgroundColor: "#1a2c3f",
+        backgroundColor: "var(--card)",
         scale: 2,
         useCORS: true,
         logging: false,
@@ -129,7 +129,7 @@ export default function CardPage() {
   }
 
   return (
-    <div className="min-h-screen" style={{ background: "#121e2b" }}>
+    <div className="min-h-screen" style={{ background: "var(--background)" }}>
       <Nav />
       <main className="max-w-4xl mx-auto px-6 py-10">
         {/* Header */}
@@ -137,31 +137,31 @@ export default function CardPage() {
           <h1 className="text-3xl font-bold mb-2" style={{ fontFamily: "var(--font-inter)" }}>
             Shareable Card
           </h1>
-          <p style={{ color: "#626d86", fontFamily: "var(--font-inter)", fontSize: "13px" }}>
+          <p style={{ color: "var(--text-secondary)", fontFamily: "var(--font-inter)", fontSize: "13px" }}>
             Generate a shareable BioAge report card from your latest score.
           </p>
         </div>
 
         {loading ? (
-          <p style={{ color: "#a0aec0", fontFamily: "var(--font-inter)", fontSize: "13px" }}>
+          <p style={{ color: "var(--text-muted)", fontFamily: "var(--font-inter)", fontSize: "13px" }}>
             Loading...
           </p>
         ) : !cardData ? (
           /* No data */
           <div
             className="p-8 rounded-sm border text-center"
-            style={{ background: "#1a2c3f", borderColor: "#223e6b" }}
+            style={{ background: "var(--card)", borderColor: "var(--border)" }}
           >
             <p className="text-lg font-semibold mb-2" style={{ fontFamily: "var(--font-inter)" }}>
               No scores yet
             </p>
-            <p className="text-sm mb-5" style={{ color: "#626d86", fontFamily: "var(--font-inter)" }}>
+            <p className="text-sm mb-5" style={{ color: "var(--text-secondary)", fontFamily: "var(--font-inter)" }}>
               You need at least one biological age calculation to generate a card.
             </p>
             <Link
               href="/calculate"
               className="inline-block px-5 py-2.5 rounded-sm text-sm font-medium"
-              style={{ background: "#00b8ac", color: "#000", fontFamily: "var(--font-inter)" }}
+              style={{ background: "var(--accent)", color: "#000", fontFamily: "var(--font-inter)" }}
             >
               Calculate Bio Age →
             </Link>
@@ -175,7 +175,7 @@ export default function CardPage() {
                 <div className="mb-4">
                   <label
                     className="block text-xs mb-1.5"
-                    style={{ color: "#626d86", fontFamily: "var(--font-inter)" }}
+                    style={{ color: "var(--text-secondary)", fontFamily: "var(--font-inter)" }}
                   >
                     Select score
                   </label>
@@ -184,9 +184,9 @@ export default function CardPage() {
                     onChange={(e) => setSelectedId(e.target.value)}
                     className="px-3 py-2 rounded-sm border text-sm outline-none"
                     style={{
-                      background: "#1a2c3f",
-                      borderColor: "#223e6b",
-                      color: "#fff",
+                      background: "var(--card)",
+                      borderColor: "var(--border)",
+                      color: "var(--foreground)",
                       fontFamily: "var(--font-inter)",
                     }}
                   >
@@ -212,11 +212,11 @@ export default function CardPage() {
             <div className="flex flex-col gap-4 min-w-[200px]">
               <div
                 className="p-5 rounded-sm border"
-                style={{ background: "#1a2c3f", borderColor: "#223e6b" }}
+                style={{ background: "var(--card)", borderColor: "var(--border)" }}
               >
                 <p
                   className="text-xs uppercase tracking-widest mb-4"
-                  style={{ color: "#8895a7", fontFamily: "var(--font-inter)" }}
+                  style={{ color: "var(--text-muted)", fontFamily: "var(--font-inter)" }}
                 >
                   Export
                 </p>
@@ -226,7 +226,7 @@ export default function CardPage() {
                     onClick={handleDownload}
                     disabled={downloading}
                     className="w-full py-2.5 px-4 rounded-sm text-sm font-medium transition-opacity hover:opacity-80 disabled:opacity-40"
-                    style={{ background: "#00b8ac", color: "#000", fontFamily: "var(--font-inter)" }}
+                    style={{ background: "var(--accent)", color: "#000", fontFamily: "var(--font-inter)" }}
                   >
                     {downloading ? "Rendering..." : "Download PNG"}
                   </button>
@@ -237,8 +237,8 @@ export default function CardPage() {
                       className="w-full py-2.5 px-4 rounded-sm text-sm border transition-colors"
                       style={{
                         background: "transparent",
-                        color: "#8895a7",
-                        borderColor: "#223e6b",
+                        color: "var(--text-muted)",
+                        borderColor: "var(--border)",
                         fontFamily: "var(--font-inter)",
                       }}
                     >
@@ -251,11 +251,11 @@ export default function CardPage() {
               {/* Summary stats */}
               <div
                 className="p-5 rounded-sm border"
-                style={{ background: "#1a2c3f", borderColor: "#223e6b" }}
+                style={{ background: "var(--card)", borderColor: "var(--border)" }}
               >
                 <p
                   className="text-xs uppercase tracking-widest mb-3"
-                  style={{ color: "#8895a7", fontFamily: "var(--font-inter)" }}
+                  style={{ color: "var(--text-muted)", fontFamily: "var(--font-inter)" }}
                 >
                   Summary
                 </p>
@@ -265,19 +265,19 @@ export default function CardPage() {
                   {
                     label: "Delta",
                     value: `${cardData.delta < 0 ? "" : "+"}${cardData.delta.toFixed(1)} yrs`,
-                    color: cardData.delta < 0 ? "#00b8ac" : "#4a3aff",
+                    color: cardData.delta < 0 ? "var(--accent)" : "#4a3aff",
                   },
                   { label: "Protocols", value: String(activeProtocols.length) },
                 ].map(({ label, value, color }) => (
                   <div key={label} className="flex justify-between mb-2">
                     <span
-                      style={{ color: "#8895a7", fontSize: "12px", fontFamily: "var(--font-inter)" }}
+                      style={{ color: "var(--text-muted)", fontSize: "12px", fontFamily: "var(--font-inter)" }}
                     >
                       {label}
                     </span>
                     <span
                       style={{
-                        color: color ?? "#fff",
+                        color: color ?? "var(--foreground)",
                         fontSize: "12px",
                         fontFamily: "var(--font-inter)",
                         fontWeight: "600",

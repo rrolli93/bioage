@@ -1,18 +1,29 @@
 @import "tailwindcss";
 
 :root {
-  /* Roumai Medical color palette */
-  --background: #121e2b;
-  --foreground: #ffffff;
-  --card: #1a2c3f;
-  --border: #223e6b;
-  --green-accent: #00b8ac;
-  --green-bg: #00b8ac1a;
-  --text-secondary: #626d86;
-  --accent-purple: #4a3aff;
-  --light-border: #e1e4ee;
+  --background: #ffffff;
+  --foreground: #111111;
+  --card: #f9f9f9;
+  --border: #e5e5e5;
+  --accent: #C0392B;
+  --accent-bg: #C0392B14;
+  --accent-glow: #C0392B44;
+  --text-secondary: #555555;
+  --text-muted: #888888;
   --font-display: var(--font-inter);
   --font-mono: var(--font-inter);
+}
+
+.dark {
+  --background: #0f0f0f;
+  --foreground: #f5f5f5;
+  --card: #1a1a1a;
+  --border: #2a2a2a;
+  --accent: #e04434;
+  --accent-bg: #e0443414;
+  --accent-glow: #e0443444;
+  --text-secondary: #999999;
+  --text-muted: #666666;
 }
 
 @theme inline {
@@ -26,6 +37,12 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-inter), system-ui, sans-serif;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+/* Accent glow */
+.accent-glow {
+  box-shadow: 0 0 10px var(--accent-glow);
 }
 
 /* Organ bar animation */
@@ -38,23 +55,18 @@ body {
   animation: bar-fill 1.2s ease forwards;
 }
 
-/* Teal glow for negative delta */
-.delta-glow {
-  box-shadow: 0 0 10px #00b8ac66;
-}
-
-/* Custom scrollbar for dark theme */
+/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #1a2c3f;
+  background: var(--card);
 }
 ::-webkit-scrollbar-thumb {
-  background: #223e6b;
+  background: var(--border);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #2e5496;
+  background: var(--text-muted);
 }
