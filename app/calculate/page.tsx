@@ -5,6 +5,8 @@ import Link from "next/link";
 import Nav from "@/components/Nav";
 import OrganBar from "@/components/OrganBar";
 
+const FONT = "'Montserrat', system-ui, sans-serif";
+
 interface FormValues {
   albumin: string;
   creatinine: string;
@@ -65,10 +67,10 @@ const EXAMPLE_VALUES: FormValues = {
 };
 
 const ORGAN_COLORS = {
-  metabolicAge:     { label: "Metabolic",     color: "#f4a261" },
-  immuneAge:        { label: "Immune",         color: "var(--accent)" },
-  inflammatoryAge:  { label: "Inflammatory",   color: "#7b5ea7" },
-  hematologicalAge: { label: "Hematological",  color: "#4cc9f0" },
+  metabolicAge:     { label: "Metabolic",     color: "#ada03e" },
+  immuneAge:        { label: "Immune",         color: "#887759" },
+  inflammatoryAge:  { label: "Inflammatory",   color: "#7a6a9a" },
+  hematologicalAge: { label: "Hematological",  color: "#ada03e" },
 };
 
 export default function CalculatePage() {
@@ -123,7 +125,6 @@ export default function CalculatePage() {
       }
 
       setResult(data);
-      // Scroll to results
       setTimeout(() => {
         document.getElementById("results")?.scrollIntoView({ behavior: "smooth" });
       }, 100);
@@ -134,83 +135,99 @@ export default function CalculatePage() {
     }
   }
 
+  const inputStyle = {
+    background: "var(--background)",
+    borderColor: "var(--border)",
+    color: "var(--foreground)",
+    fontFamily: FONT,
+    fontSize: "13px",
+    outline: "none",
+  };
+
   return (
     <div className="min-h-screen" style={{ background: "var(--background)" }}>
       <Nav />
 
-      <main className="max-w-3xl mx-auto px-6 py-10">
+      <main className="max-w-3xl mx-auto px-6 py-12">
         {/* Header */}
-        <div className="mb-8">
+        <div className="mb-10">
+          <p
+            className="text-xs uppercase mb-3"
+            style={{ fontFamily: FONT, color: "var(--accent)", letterSpacing: "0.2em", fontWeight: 600 }}
+          >
+            Assessment
+          </p>
           <h1
-            className="text-3xl font-bold mb-2"
-            style={{ fontFamily: "var(--font-inter)" }}
+            className="text-2xl font-bold mb-2"
+            style={{ fontFamily: FONT, letterSpacing: "-0.01em" }}
           >
             PhenoAge Calculator
           </h1>
-          <p style={{ color: "var(--text-secondary)", fontFamily: "var(--font-inter)", fontSize: "13px" }}>
-            Enter your standard bloodwork values to compute your biological age.
+          <p style={{ color: "var(--text-muted)", fontFamily: FONT, fontSize: "13px", fontWeight: 400 }}>
+            Enter standard bloodwork values to compute your biological age.
           </p>
         </div>
 
         {/* Disclaimer */}
         <div
-          className="p-4 rounded-sm border mb-8 text-sm"
+          className="p-4 mb-8"
           style={{
-            background: "#0d1a10",
-            borderColor: "#1a3a22",
-            color: "var(--text-secondary)",
-            fontFamily: "var(--font-inter)",
-            fontSize: "12px",
-            lineHeight: "1.6",
+            background: "rgba(136,119,89,0.05)",
+            border: "1px solid rgba(136,119,89,0.15)",
+            color: "var(--text-muted)",
+            fontFamily: FONT,
+            fontSize: "11px",
+            lineHeight: "1.7",
+            letterSpacing: "0.02em",
           }}
         >
           <span style={{ color: "var(--accent)", fontWeight: 600 }}>Note: </span>
-          For informational purposes only. Not medical advice. PhenoAge is a research tool based on{" "}
-          <span style={{ color: "var(--text-muted)" }}>
-            Levine ME et al. &ldquo;An epigenetic biomarker of aging for lifespan and healthspan.&rdquo;
-            Aging (Albany NY). 2018. doi:10.18632/aging.101414
-          </span>
+          For informational purposes only. Not medical advice. Based on{" "}
+          Levine ME et al. &ldquo;An epigenetic biomarker of aging for lifespan and healthspan.&rdquo;
+          Aging (Albany NY). 2018. doi:10.18632/aging.101414
         </div>
 
         {/* Form */}
         <form onSubmit={handleSubmit}>
           <div
-            className="p-6 rounded-sm border mb-6"
-            style={{ background: "var(--card)", borderColor: "var(--border)" }}
+            className="p-7 mb-6"
+            style={{ background: "var(--card)", border: "1px solid var(--border)" }}
           >
-            <div className="flex justify-between items-center mb-6">
+            <div className="flex justify-between items-center mb-7">
               <p
-                className="text-xs uppercase tracking-widest"
-                style={{ color: "var(--text-muted)", fontFamily: "var(--font-inter)" }}
+                className="text-xs uppercase"
+                style={{ color: "var(--accent)", fontFamily: FONT, letterSpacing: "0.18em", fontWeight: 600 }}
               >
                 Bloodwork Inputs
               </p>
               <button
                 type="button"
                 onClick={loadExample}
-                className="text-xs px-3 py-1 rounded-sm transition-opacity hover:opacity-70"
+                className="text-xs px-3 py-1.5 transition-opacity hover:opacity-70"
                 style={{
-                  background: "var(--border)",
-                  color: "var(--text-secondary)",
-                  fontFamily: "var(--font-inter)",
+                  background: "transparent",
+                  color: "var(--text-muted)",
+                  fontFamily: FONT,
+                  border: "1px solid var(--border)",
+                  letterSpacing: "0.08em",
                 }}
               >
-                Load example values
+                Load example
               </button>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               {FIELDS.map(({ key, label, unit, placeholder, normal }) => (
                 <div key={key}>
                   <label
                     htmlFor={key}
-                    className="block text-xs mb-1.5"
-                    style={{ color: "var(--text-secondary)", fontFamily: "var(--font-inter)" }}
+                    className="block text-xs mb-2"
+                    style={{ color: "var(--text-secondary)", fontFamily: FONT, fontWeight: 500, letterSpacing: "0.06em" }}
                   >
                     {label}
-                    <span style={{ color: "var(--text-muted)", marginLeft: "6px" }}>{unit}</span>
+                    <span style={{ color: "var(--text-muted)", marginLeft: "6px", fontWeight: 400 }}>{unit}</span>
                     {normal !== "—" && (
-                      <span style={{ color: "var(--text-muted)", marginLeft: "6px", fontSize: "10px" }}>
+                      <span style={{ color: "var(--text-muted)", marginLeft: "6px", fontSize: "9px", letterSpacing: "0.06em" }}>
                         ref: {normal}
                       </span>
                     )}
@@ -223,13 +240,8 @@ export default function CalculatePage() {
                     value={values[key]}
                     onChange={(e) => handleChange(key, e.target.value)}
                     required
-                    className="w-full px-3 py-2 rounded-sm border text-sm outline-none transition-colors focus:border-[#C0392B55]"
-                    style={{
-                      background: "var(--background)",
-                      borderColor: "var(--border)",
-                      color: "var(--foreground)",
-                      fontFamily: "var(--font-inter)",
-                    }}
+                    className="w-full px-3 py-2.5 border transition-colors"
+                    style={inputStyle}
                   />
                 </div>
               ))}
@@ -238,12 +250,13 @@ export default function CalculatePage() {
 
           {error && (
             <div
-              className="mb-4 p-3 rounded-sm border text-sm"
+              className="mb-5 p-4 text-xs"
               style={{
-                background: "#1a1525",
-                borderColor: "#3a1010",
-                color: "#4a3aff",
-                fontFamily: "var(--font-inter)",
+                background: "var(--worse-bg)",
+                border: "1px solid var(--worse)",
+                color: "#c07070",
+                fontFamily: FONT,
+                letterSpacing: "0.04em",
               }}
             >
               {error}
@@ -253,129 +266,121 @@ export default function CalculatePage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3 rounded-sm text-sm font-semibold transition-opacity hover:opacity-80 disabled:opacity-40"
+            className="w-full py-3.5 text-xs font-semibold transition-opacity hover:opacity-80 disabled:opacity-40"
             style={{
               background: "var(--accent)",
-              color: "#000",
-              fontFamily: "var(--font-inter)",
+              color: "#ffffff",
+              fontFamily: FONT,
+              letterSpacing: "0.15em",
             }}
           >
-            {loading ? "Computing..." : "Calculate Biological Age →"}
+            {loading ? "COMPUTING..." : "CALCULATE BIOLOGICAL AGE"}
           </button>
         </form>
 
         {/* Results */}
         {result && (
-          <div id="results" className="mt-10">
+          <div id="results" className="mt-12">
             {/* Hero result */}
             <div
-              className="p-8 rounded-sm border mb-6 relative overflow-hidden"
-              style={{ background: "var(--card)", borderColor: "var(--border)" }}
+              className="p-8 mb-6"
+              style={{ background: "var(--card)", border: "1px solid var(--border)" }}
             >
-              {/* Background glow */}
-              <div
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                  background:
-                    result.delta < 0
-                      ? "radial-gradient(ellipse at 50% 0%, var(--accent-bg) 0%, transparent 70%)"
-                      : "radial-gradient(ellipse at 50% 0%, #4a3aff11 0%, transparent 70%)",
-                }}
-              />
+              <p
+                className="text-xs uppercase mb-6"
+                style={{ color: "var(--accent)", fontFamily: FONT, letterSpacing: "0.2em", fontWeight: 600 }}
+              >
+                Your Biological Age
+              </p>
 
-              <div className="relative">
-                <p
-                  className="text-xs uppercase tracking-widest mb-4"
-                  style={{ color: "var(--text-muted)", fontFamily: "var(--font-inter)" }}
-                >
-                  Your Biological Age
-                </p>
-
-                <div className="flex items-end gap-5 mb-4">
-                  {/* Big bio age number */}
+              <div className="flex items-end gap-6 mb-5">
+                {/* Big bio age number */}
+                <div>
                   <p
                     style={{
-                      fontSize: "80px",
+                      fontSize: "88px",
                       fontWeight: "800",
                       lineHeight: 1,
-                      fontFamily: "var(--font-inter)",
-                      letterSpacing: "-0.03em",
+                      fontFamily: FONT,
+                      letterSpacing: "-0.04em",
+                      color: "var(--foreground)",
                     }}
                   >
                     {result.phenoAge.toFixed(1)}
                   </p>
-
-                  <div className="mb-2">
-                    <p style={{ color: "var(--text-muted)", fontSize: "11px", fontFamily: "var(--font-inter)", textTransform: "uppercase", letterSpacing: "0.1em" }}>
-                      Bio Age
-                    </p>
-                    <p style={{ color: "var(--text-secondary)", fontSize: "28px", fontFamily: "var(--font-inter)", fontWeight: "600", lineHeight: 1 }}>
-                      {result.chronologicalAge}
-                    </p>
-                    <p style={{ color: "var(--text-muted)", fontSize: "10px", fontFamily: "var(--font-inter)", textTransform: "uppercase", letterSpacing: "0.1em" }}>
-                      Chrono
-                    </p>
-                  </div>
-
-                  {/* Delta badge */}
-                  <div
-                    className="mb-3 px-4 py-2 rounded-sm"
-                    style={{
-                      background: result.delta < 0 ? "var(--accent-bg)" : "#1a1525",
-                      border: `1px solid ${result.delta < 0 ? "var(--accent-glow)" : "#4a3aff44"}`,
-                      boxShadow: result.delta < 0 ? "0 0 10px var(--accent-glow)" : "0 0 10px #4a3aff44",
-                    }}
-                  >
-                    <p
-                      style={{
-                        fontSize: "22px",
-                        fontWeight: "700",
-                        color: result.delta < 0 ? "var(--accent)" : "#4a3aff",
-                        fontFamily: "var(--font-inter)",
-                        lineHeight: 1,
-                      }}
-                    >
-                      {result.delta < 0 ? "" : "+"}
-                      {result.delta.toFixed(1)}
-                    </p>
-                    <p style={{ fontSize: "9px", color: "var(--text-secondary)", fontFamily: "var(--font-inter)", textAlign: "center", marginTop: "2px" }}>
-                      yrs delta
-                    </p>
-                  </div>
-                </div>
-
-                {/* Status line */}
-                <div
-                  className="flex items-center gap-2 px-4 py-2.5 rounded-sm"
-                  style={{ background: result.delta < 0 ? "var(--accent-bg)" : "#1a1525" }}
-                >
-                  <span
-                    className="w-2 h-2 rounded-full flex-shrink-0"
-                    style={{ background: result.delta < 0 ? "var(--accent)" : "#4a3aff" }}
-                  />
-                  <p
-                    style={{
-                      color: result.delta < 0 ? "var(--accent)" : "#4a3aff",
-                      fontSize: "13px",
-                      fontFamily: "var(--font-inter)",
-                    }}
-                  >
-                    Aging{" "}
-                    <strong>{Math.abs(result.delta).toFixed(1)} years</strong>{" "}
-                    {result.delta < 0 ? "slower" : "faster"} than chronological age
+                  <p style={{ color: "var(--text-muted)", fontSize: "9px", fontFamily: FONT, textTransform: "uppercase", letterSpacing: "0.18em", fontWeight: 600, marginTop: "4px" }}>
+                    Bio Age
                   </p>
                 </div>
+
+                <div className="mb-4">
+                  <p style={{ color: "rgba(255,255,255,0.5)", fontSize: "30px", fontFamily: FONT, fontWeight: "700", lineHeight: 1, letterSpacing: "-0.02em" }}>
+                    {result.chronologicalAge}
+                  </p>
+                  <p style={{ color: "var(--text-muted)", fontSize: "9px", fontFamily: FONT, textTransform: "uppercase", letterSpacing: "0.18em", fontWeight: 600, marginTop: "4px" }}>
+                    Chrono
+                  </p>
+                </div>
+
+                {/* Delta badge */}
+                <div
+                  className="mb-5 px-4 py-2"
+                  style={{
+                    background: result.delta < 0 ? "var(--accent-bg)" : "var(--worse-bg)",
+                    border: `1px solid ${result.delta < 0 ? "var(--accent)" : "var(--worse)"}`,
+                  }}
+                >
+                  <p
+                    style={{
+                      fontSize: "24px",
+                      fontWeight: "700",
+                      color: result.delta < 0 ? "var(--accent)" : "#8a5555",
+                      fontFamily: FONT,
+                      lineHeight: 1,
+                      letterSpacing: "-0.02em",
+                    }}
+                  >
+                    {result.delta < 0 ? "" : "+"}
+                    {result.delta.toFixed(1)}
+                  </p>
+                  <p style={{ fontSize: "8px", color: "var(--text-muted)", fontFamily: FONT, textAlign: "center", marginTop: "3px", letterSpacing: "0.1em", fontWeight: 600 }}>
+                    YRS DELTA
+                  </p>
+                </div>
+              </div>
+
+              {/* Status line */}
+              <div
+                className="flex items-center gap-2.5 px-4 py-3"
+                style={{ background: result.delta < 0 ? "rgba(136,119,89,0.06)" : "rgba(120,60,60,0.06)" }}
+              >
+                <span
+                  className="w-1.5 h-1.5 rounded-full flex-shrink-0"
+                  style={{ background: result.delta < 0 ? "var(--accent)" : "#8a5555" }}
+                />
+                <p
+                  style={{
+                    color: result.delta < 0 ? "var(--accent)" : "#8a5555",
+                    fontSize: "12px",
+                    fontFamily: FONT,
+                    fontWeight: 500,
+                  }}
+                >
+                  Aging{" "}
+                  <strong>{Math.abs(result.delta).toFixed(1)} years</strong>{" "}
+                  {result.delta < 0 ? "slower" : "faster"} than chronological age
+                </p>
               </div>
             </div>
 
             {/* Organ breakdown */}
             <div
-              className="p-6 rounded-sm border mb-6"
-              style={{ background: "var(--card)", borderColor: "var(--border)" }}
+              className="p-7 mb-6"
+              style={{ background: "var(--card)", border: "1px solid var(--border)" }}
             >
               <p
-                className="text-xs uppercase tracking-widest mb-6"
-                style={{ color: "var(--text-muted)", fontFamily: "var(--font-inter)" }}
+                className="text-xs uppercase mb-7"
+                style={{ color: "var(--accent)", fontFamily: FONT, letterSpacing: "0.18em", fontWeight: 600 }}
               >
                 Organ System Breakdown
               </p>
@@ -391,11 +396,11 @@ export default function CalculatePage() {
               ))}
 
               <p
-                className="mt-4 text-xs"
-                style={{ color: "var(--text-muted)", fontFamily: "var(--font-inter)" }}
+                className="mt-5 text-xs"
+                style={{ color: "var(--text-muted)", fontFamily: FONT, lineHeight: "1.6", fontSize: "11px" }}
               >
-                Sub-scores are derived from z-scores vs age-adjusted population norms (NHANES).
-                The white marker on each bar represents your chronological age.
+                Sub-scores derived from z-scores vs. age-adjusted population norms (NHANES).
+                The vertical marker on each bar represents your chronological age.
               </p>
             </div>
 
@@ -403,17 +408,17 @@ export default function CalculatePage() {
             <div className="flex gap-3">
               <Link
                 href="/card"
-                className="px-5 py-2.5 rounded-sm text-sm font-medium transition-opacity hover:opacity-80"
-                style={{ background: "var(--accent)", color: "#000", fontFamily: "var(--font-inter)" }}
+                className="px-6 py-3 text-xs font-semibold transition-opacity hover:opacity-80"
+                style={{ background: "var(--accent)", color: "#ffffff", fontFamily: FONT, letterSpacing: "0.12em" }}
               >
-                Generate Share Card →
+                GENERATE SHARE CARD
               </Link>
               <button
                 onClick={() => { setResult(null); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-                className="px-5 py-2.5 rounded-sm text-sm border transition-colors"
-                style={{ background: "transparent", color: "var(--text-muted)", borderColor: "var(--border)", fontFamily: "var(--font-inter)" }}
+                className="px-6 py-3 text-xs border transition-opacity hover:opacity-70"
+                style={{ background: "transparent", color: "var(--text-muted)", borderColor: "var(--border)", fontFamily: FONT, letterSpacing: "0.1em" }}
               >
-                Recalculate
+                RECALCULATE
               </button>
             </div>
           </div>

@@ -1,5 +1,7 @@
 "use client";
 
+const FONT = "'Montserrat', system-ui, sans-serif";
+
 interface ProtocolPillProps {
   compound: string;
   dose?: string;
@@ -9,17 +11,17 @@ interface ProtocolPillProps {
   onDelete?: () => void;
 }
 
-// Map category to a subtle accent color
+// Map category to clinical accent colors (within our palette)
 const CATEGORY_COLORS: Record<string, string> = {
-  "Stem Cell Therapies": "#4cc9f0",
-  "Peptide Bioregulators (Khavinson)": "var(--accent)",
-  "Tissue Repair Peptides": "#f4a261",
-  "Immune Modulators": "#7b5ea7",
-  Senolytics: "#4a3aff",
-  "NAD+ Pathway": "#ffd166",
-  "GLP-1 / Metabolic": "#06d6a0",
-  "mTOR / Autophagy": "#a8dadc",
-  "Other Longevity": "var(--text-muted)",
+  "Stem Cell Therapies": "#ada03e",
+  "Peptide Bioregulators (Khavinson)": "#887759",
+  "Tissue Repair Peptides": "#ada03e",
+  "Immune Modulators": "#7a6a9a",
+  Senolytics: "#6a7a9a",
+  "NAD+ Pathway": "#887759",
+  "GLP-1 / Metabolic": "#ada03e",
+  "mTOR / Autophagy": "#7a8a6a",
+  "Other Longevity": "#606088",
 };
 
 export default function ProtocolPill({
@@ -34,26 +36,26 @@ export default function ProtocolPill({
 
   return (
     <div
-      className="inline-flex items-center gap-2 px-3 py-1.5 rounded-sm border text-sm"
+      className="inline-flex items-center gap-2 px-3 py-1.5 text-xs"
       style={{
-        background: active ? "var(--card)" : "var(--background)",
-        borderColor: active ? color + "44" : "var(--border)",
-        opacity: active ? 1 : 0.5,
-        fontFamily: "var(--font-inter)",
+        background: active ? "var(--card)" : "transparent",
+        border: `1px solid ${active ? color + "44" : "var(--border)"}`,
+        opacity: active ? 1 : 0.45,
+        fontFamily: FONT,
       }}
     >
-      {/* Color dot */}
+      {/* Color marker */}
       <span
-        className="w-1.5 h-1.5 rounded-full flex-shrink-0"
-        style={{ background: active ? color : "var(--text-muted)" }}
+        className="w-1 h-3 flex-shrink-0"
+        style={{ background: active ? color : "var(--text-muted)", opacity: 0.8 }}
       />
 
       {/* Compound name */}
-      <span className="text-white font-medium">{compound}</span>
+      <span style={{ color: "var(--foreground)", fontWeight: 500 }}>{compound}</span>
 
       {/* Dose */}
       {dose && (
-        <span style={{ color: "var(--text-secondary)" }} className="text-xs">
+        <span style={{ color: "var(--text-muted)" }}>
           {dose}
         </span>
       )}
@@ -62,7 +64,7 @@ export default function ProtocolPill({
       {onToggle && (
         <button
           onClick={onToggle}
-          className="ml-1 text-xs hover:opacity-80 transition-opacity"
+          className="ml-1 transition-opacity hover:opacity-70"
           style={{ color: active ? color : "var(--text-muted)" }}
           title={active ? "Mark inactive" : "Mark active"}
         >
@@ -74,7 +76,7 @@ export default function ProtocolPill({
       {onDelete && (
         <button
           onClick={onDelete}
-          className="ml-0.5 text-xs hover:opacity-80 transition-opacity"
+          className="ml-0.5 transition-opacity hover:opacity-70"
           style={{ color: "var(--text-muted)" }}
           title="Remove"
         >

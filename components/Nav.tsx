@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useTheme } from "@/app/layout";
 
 const links = [
   { href: "/", label: "Dashboard" },
@@ -11,44 +10,51 @@ const links = [
   { href: "/card", label: "Card" },
 ];
 
+const FONT = "'Montserrat', system-ui, sans-serif";
+
 export default function Nav() {
   const pathname = usePathname();
-  const { theme, toggle } = useTheme();
 
   return (
     <nav
-      className="flex items-center justify-between px-6 py-4 border-b sticky top-0 z-50 transition-colors"
-      style={{ background: "var(--background)", borderColor: "var(--border)" }}
+      className="flex items-center justify-between px-6 py-4 border-b sticky top-0 z-50"
+      style={{
+        background: "var(--background)",
+        borderColor: "var(--border)",
+        backdropFilter: "blur(8px)",
+      }}
     >
       {/* Logo */}
-      <Link href="/" className="flex items-center gap-2">
+      <Link href="/" className="flex items-center gap-1.5">
         <span
-          className="text-xl font-bold tracking-tight"
-          style={{ fontFamily: "var(--font-inter)", color: "var(--accent)" }}
+          className="text-base font-bold tracking-widest"
+          style={{ fontFamily: FONT, color: "var(--accent)", letterSpacing: "0.18em" }}
         >
           BIO
         </span>
         <span
-          className="text-xl font-bold tracking-tight"
-          style={{ fontFamily: "var(--font-inter)", color: "var(--foreground)" }}
+          className="text-base font-bold tracking-widest"
+          style={{ fontFamily: FONT, color: "var(--foreground)", letterSpacing: "0.18em" }}
         >
           AGE
         </span>
         <span
-          className="text-xs px-1.5 py-0.5 rounded-sm ml-1"
+          className="text-xs px-1.5 py-0.5 ml-1"
           style={{
             background: "var(--accent-bg)",
             color: "var(--accent)",
-            fontFamily: "var(--font-inter)",
-            fontSize: "9px",
-            letterSpacing: "0.1em",
+            fontFamily: FONT,
+            fontSize: "8px",
+            letterSpacing: "0.15em",
+            border: "1px solid var(--accent)",
+            opacity: 0.7,
           }}
         >
           BETA
         </span>
       </Link>
 
-      {/* Links + theme toggle */}
+      {/* Links */}
       <div className="flex items-center gap-1">
         {links.map(({ href, label }) => {
           const active = pathname === href;
@@ -56,34 +62,19 @@ export default function Nav() {
             <Link
               key={href}
               href={href}
-              className="px-3 py-1.5 text-sm rounded-sm transition-colors"
+              className="px-3 py-1.5 text-xs font-medium transition-colors"
               style={{
-                fontFamily: "var(--font-inter)",
-                background: active ? "var(--accent-bg)" : "transparent",
-                color: active ? "var(--accent)" : "var(--text-secondary)",
+                fontFamily: FONT,
+                letterSpacing: "0.06em",
+                color: active ? "var(--foreground)" : "var(--text-muted)",
+                borderBottom: active ? "1px solid var(--accent)" : "1px solid transparent",
+                paddingBottom: active ? "4px" : "4px",
               }}
             >
-              {label}
+              {label.toUpperCase()}
             </Link>
           );
         })}
-
-        {/* Dark mode toggle */}
-        <button
-          onClick={toggle}
-          aria-label="Toggle dark mode"
-          className="ml-3 px-2 py-1.5 rounded-sm text-sm transition-colors hover:opacity-80"
-          style={{
-            background: "var(--card)",
-            border: "1px solid var(--border)",
-            color: "var(--text-secondary)",
-            fontFamily: "var(--font-inter)",
-            fontSize: "15px",
-            lineHeight: 1,
-          }}
-        >
-          {theme === "dark" ? "☀️" : "🌙"}
-        </button>
       </div>
     </nav>
   );

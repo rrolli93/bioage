@@ -1,48 +1,35 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-  --background: #ffffff;
-  --foreground: #111111;
-  --card: #f9f9f9;
-  --border: #e5e5e5;
-  --accent: #C0392B;
-  --accent-bg: #C0392B14;
-  --accent-glow: #C0392B44;
-  --text-secondary: #555555;
-  --text-muted: #888888;
-  --font-display: var(--font-inter);
-  --font-mono: var(--font-inter);
-}
-
-.dark {
-  --background: #0f0f0f;
-  --foreground: #f5f5f5;
-  --card: #1a1a1a;
-  --border: #2a2a2a;
-  --accent: #e04434;
-  --accent-bg: #e0443414;
-  --accent-glow: #e0443444;
-  --text-secondary: #999999;
-  --text-muted: #666666;
+  --background: #010035;
+  --foreground: #ffffff;
+  --card: #06064a;
+  --card-alt: #0a0a52;
+  --border: rgba(136, 119, 89, 0.2);
+  --accent: #887759;
+  --accent-2: #ada03e;
+  --accent-bg: rgba(136, 119, 89, 0.1);
+  --accent-bg-2: rgba(173, 160, 62, 0.1);
+  --accent-glow: rgba(136, 119, 89, 0.25);
+  --text-secondary: #a0a0c0;
+  --text-muted: #606088;
+  --worse: #7a4040;
+  --worse-bg: rgba(120, 60, 60, 0.12);
+  --font-display: var(--font-montserrat);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-inter);
-  --font-mono: var(--font-inter);
+  --font-sans: var(--font-montserrat);
+  --font-mono: var(--font-montserrat);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-inter), system-ui, sans-serif;
-  transition: background 0.25s ease, color 0.25s ease;
-}
-
-/* Accent glow */
-.accent-glow {
-  box-shadow: 0 0 10px var(--accent-glow);
+  font-family: 'Montserrat', var(--font-montserrat), system-ui, sans-serif;
 }
 
 /* Organ bar animation */
@@ -57,16 +44,16 @@ body {
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 4px;
+  height: 4px;
 }
 ::-webkit-scrollbar-track {
   background: var(--card);
 }
 ::-webkit-scrollbar-thumb {
   background: var(--border);
-  border-radius: 3px;
+  border-radius: 2px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--text-muted);
+  background: var(--accent);
 }

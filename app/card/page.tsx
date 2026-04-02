@@ -5,6 +5,8 @@ import Nav from "@/components/Nav";
 import BioAgeCard, { CardData } from "@/components/BioAgeCard";
 import Link from "next/link";
 
+const FONT = "'Montserrat', system-ui, sans-serif";
+
 interface BioAgeEntry {
   id: string;
   date: string;
@@ -134,16 +136,16 @@ export default function CardPage() {
       <main className="max-w-4xl mx-auto px-6 py-10">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold mb-2" style={{ fontFamily: "var(--font-inter)" }}>
+          <h1 className="text-3xl font-bold mb-2" style={{ fontFamily: "'Montserrat', system-ui, sans-serif" }}>
             Shareable Card
           </h1>
-          <p style={{ color: "var(--text-secondary)", fontFamily: "var(--font-inter)", fontSize: "13px" }}>
+          <p style={{ color: "var(--text-secondary)", fontFamily: "'Montserrat', system-ui, sans-serif", fontSize: "13px" }}>
             Generate a shareable BioAge report card from your latest score.
           </p>
         </div>
 
         {loading ? (
-          <p style={{ color: "var(--text-muted)", fontFamily: "var(--font-inter)", fontSize: "13px" }}>
+          <p style={{ color: "var(--text-muted)", fontFamily: "'Montserrat', system-ui, sans-serif", fontSize: "13px" }}>
             Loading...
           </p>
         ) : !cardData ? (
@@ -152,16 +154,16 @@ export default function CardPage() {
             className="p-8 rounded-sm border text-center"
             style={{ background: "var(--card)", borderColor: "var(--border)" }}
           >
-            <p className="text-lg font-semibold mb-2" style={{ fontFamily: "var(--font-inter)" }}>
+            <p className="text-lg font-semibold mb-2" style={{ fontFamily: "'Montserrat', system-ui, sans-serif" }}>
               No scores yet
             </p>
-            <p className="text-sm mb-5" style={{ color: "var(--text-secondary)", fontFamily: "var(--font-inter)" }}>
+            <p className="text-sm mb-5" style={{ color: "var(--text-secondary)", fontFamily: "'Montserrat', system-ui, sans-serif" }}>
               You need at least one biological age calculation to generate a card.
             </p>
             <Link
               href="/calculate"
               className="inline-block px-5 py-2.5 rounded-sm text-sm font-medium"
-              style={{ background: "var(--accent)", color: "#000", fontFamily: "var(--font-inter)" }}
+              style={{ background: "var(--accent)", color: "#ffffff", fontFamily: "'Montserrat', system-ui, sans-serif" }}
             >
               Calculate Bio Age →
             </Link>
@@ -175,7 +177,7 @@ export default function CardPage() {
                 <div className="mb-4">
                   <label
                     className="block text-xs mb-1.5"
-                    style={{ color: "var(--text-secondary)", fontFamily: "var(--font-inter)" }}
+                    style={{ color: "var(--text-secondary)", fontFamily: "'Montserrat', system-ui, sans-serif" }}
                   >
                     Select score
                   </label>
@@ -187,7 +189,7 @@ export default function CardPage() {
                       background: "var(--card)",
                       borderColor: "var(--border)",
                       color: "var(--foreground)",
-                      fontFamily: "var(--font-inter)",
+                      fontFamily: "'Montserrat', system-ui, sans-serif",
                     }}
                   >
                     {entries.map((e) => (
@@ -216,7 +218,7 @@ export default function CardPage() {
               >
                 <p
                   className="text-xs uppercase tracking-widest mb-4"
-                  style={{ color: "var(--text-muted)", fontFamily: "var(--font-inter)" }}
+                  style={{ color: "var(--text-muted)", fontFamily: "'Montserrat', system-ui, sans-serif" }}
                 >
                   Export
                 </p>
@@ -226,7 +228,7 @@ export default function CardPage() {
                     onClick={handleDownload}
                     disabled={downloading}
                     className="w-full py-2.5 px-4 rounded-sm text-sm font-medium transition-opacity hover:opacity-80 disabled:opacity-40"
-                    style={{ background: "var(--accent)", color: "#000", fontFamily: "var(--font-inter)" }}
+                    style={{ background: "var(--accent)", color: "#ffffff", fontFamily: "'Montserrat', system-ui, sans-serif" }}
                   >
                     {downloading ? "Rendering..." : "Download PNG"}
                   </button>
@@ -239,7 +241,7 @@ export default function CardPage() {
                         background: "transparent",
                         color: "var(--text-muted)",
                         borderColor: "var(--border)",
-                        fontFamily: "var(--font-inter)",
+                        fontFamily: "'Montserrat', system-ui, sans-serif",
                       }}
                     >
                       Share
@@ -255,7 +257,7 @@ export default function CardPage() {
               >
                 <p
                   className="text-xs uppercase tracking-widest mb-3"
-                  style={{ color: "var(--text-muted)", fontFamily: "var(--font-inter)" }}
+                  style={{ color: "var(--text-muted)", fontFamily: "'Montserrat', system-ui, sans-serif" }}
                 >
                   Summary
                 </p>
@@ -265,13 +267,13 @@ export default function CardPage() {
                   {
                     label: "Delta",
                     value: `${cardData.delta < 0 ? "" : "+"}${cardData.delta.toFixed(1)} yrs`,
-                    color: cardData.delta < 0 ? "var(--accent)" : "#4a3aff",
+                    color: cardData.delta < 0 ? "var(--accent)" : "var(--accent-2)",
                   },
                   { label: "Protocols", value: String(activeProtocols.length) },
                 ].map(({ label, value, color }) => (
                   <div key={label} className="flex justify-between mb-2">
                     <span
-                      style={{ color: "var(--text-muted)", fontSize: "12px", fontFamily: "var(--font-inter)" }}
+                      style={{ color: "var(--text-muted)", fontSize: "12px", fontFamily: "'Montserrat', system-ui, sans-serif" }}
                     >
                       {label}
                     </span>
@@ -279,7 +281,7 @@ export default function CardPage() {
                       style={{
                         color: color ?? "var(--foreground)",
                         fontSize: "12px",
-                        fontFamily: "var(--font-inter)",
+                        fontFamily: "'Montserrat', system-ui, sans-serif",
                         fontWeight: "600",
                       }}
                     >

@@ -10,13 +10,13 @@ interface OrganBarProps {
 }
 
 const MAX_AGE = 100;
+const FONT = "'Montserrat', system-ui, sans-serif";
 
 export default function OrganBar({ label, organAge, chronoAge, color }: OrganBarProps) {
   const [mounted, setMounted] = useState(false);
   const barRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Trigger animation after mount
     const t = setTimeout(() => setMounted(true), 50);
     return () => clearTimeout(t);
   }, []);
@@ -27,68 +27,71 @@ export default function OrganBar({ label, organAge, chronoAge, color }: OrganBar
   const isOlder = delta > 0;
 
   return (
-    <div className="mb-4">
-      <div className="flex justify-between items-center mb-1">
+    <div className="mb-5">
+      <div className="flex justify-between items-center mb-2">
         <span
-          className="text-xs uppercase tracking-widest"
-          style={{ color: "var(--text-secondary)", fontFamily: "var(--font-inter)" }}
+          className="text-xs uppercase"
+          style={{ color: "var(--text-secondary)", fontFamily: FONT, letterSpacing: "0.14em", fontWeight: 600, fontSize: "10px" }}
         >
           {label}
         </span>
         <div className="flex items-center gap-2">
           <span
-            className="text-sm font-medium"
-            style={{ fontFamily: "var(--font-inter)", color }}
+            className="text-sm font-semibold"
+            style={{ fontFamily: FONT, color: "var(--foreground)" }}
           >
             {organAge.toFixed(1)}
           </span>
           <span
-            className={`text-xs px-1.5 py-0.5 rounded`}
+            className="text-xs px-1.5 py-0.5"
             style={{
-              fontFamily: "var(--font-inter)",
-              background: isOlder ? "#1a1525" : "var(--accent-bg)",
-              color: isOlder ? "#4a3aff" : "var(--accent)",
+              fontFamily: FONT,
+              background: isOlder ? "var(--worse-bg)" : "var(--accent-bg)",
+              color: isOlder ? "var(--worse)" : "var(--accent)",
+              border: `1px solid ${isOlder ? "var(--worse)" : "var(--accent)"}`,
+              opacity: 0.85,
+              fontWeight: 600,
             }}
           >
-            {isOlder ? "+" : ""}
-            {delta.toFixed(1)}
+            {isOlder ? "+" : ""}{delta.toFixed(1)}
           </span>
         </div>
       </div>
 
       {/* Bar track */}
       <div
-        className="relative h-2 rounded-sm overflow-hidden"
-        style={{ background: "var(--border)" }}
+        className="relative h-1"
+        style={{ background: "rgba(255,255,255,0.06)" }}
       >
         {/* Organ age bar */}
         <div
           ref={barRef}
-          className="absolute top-0 left-0 h-full rounded-sm transition-all duration-1200 ease-out"
+          className="absolute top-0 left-0 h-full"
           style={{
             width: mounted ? `${organPct}%` : "0%",
             background: color,
             transition: "width 1.2s ease",
+            opacity: 0.7,
           }}
         />
 
         {/* Chronological age marker */}
         <div
-          className="absolute top-0 h-full w-0.5"
+          className="absolute top-0 h-full w-px"
           style={{
             left: `${chronoPct}%`,
-            background: "#ffffff33",
+            background: "rgba(255,255,255,0.3)",
           }}
         />
       </div>
 
-      {/* Age scale labels */}
+      {/* Labels */}
       <div
-        className="flex justify-between mt-0.5 text-xs"
-        style={{ color: "var(--text-muted)", fontFamily: "var(--font-inter)" }}
+        className="flex justify-between mt-1 text-xs"
+        style={{ color: "var(--text-muted)", fontFamily: FONT, fontSize: "9px", letterSpacing: "0.05em" }}
       >
         <span>0</span>
-        <span style={{ color: "var(--text-muted)" }}>chrono: {chronoAge}</span>
+        <span>chrono: {chronoAge}</span>
         <span>{MAX_AGE}</span>
       </div>
     </div>

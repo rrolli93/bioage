@@ -4,6 +4,8 @@ import { forwardRef } from "react";
 import OrganBar from "./OrganBar";
 import ProtocolPill from "./ProtocolPill";
 
+const FONT = "'Montserrat', system-ui, sans-serif";
+
 export interface CardData {
   phenoAge: number;
   chronoAge: number;
@@ -23,10 +25,10 @@ interface BioAgeCardProps {
 }
 
 const ORGAN_COLORS = {
-  metabolic: "#f4a261",
-  immune: "var(--accent)",
-  inflammatory: "#7b5ea7",
-  hematological: "#4cc9f0",
+  metabolic: "#ada03e",
+  immune: "#887759",
+  inflammatory: "#7a6a9a",
+  hematological: "#ada03e",
 };
 
 const BioAgeCard = forwardRef<HTMLDivElement, BioAgeCardProps>(function BioAgeCard(
@@ -47,58 +49,59 @@ const BioAgeCard = forwardRef<HTMLDivElement, BioAgeCardProps>(function BioAgeCa
       ref={ref}
       style={{
         width: "420px",
-        background: "var(--card)",
-        border: "1px solid var(--border)",
-        borderRadius: "12px",
-        padding: "28px",
-        fontFamily: "var(--font-inter), system-ui, sans-serif",
-        color: "var(--foreground)",
+        background: "#06064a",
+        border: "1px solid rgba(136,119,89,0.2)",
+        borderRadius: "2px",
+        padding: "32px",
+        fontFamily: FONT,
+        color: "#ffffff",
       }}
     >
       {/* Header */}
-      <div className="flex justify-between items-start mb-6">
+      <div className="flex justify-between items-start mb-8">
         <div>
           <p
             style={{
-              fontSize: "11px",
-              color: "var(--text-secondary)",
-              letterSpacing: "0.15em",
+              fontSize: "9px",
+              color: "#887759",
+              letterSpacing: "0.22em",
               textTransform: "uppercase",
-              fontFamily: "var(--font-inter)",
-              marginBottom: "2px",
+              fontFamily: FONT,
+              marginBottom: "4px",
+              fontWeight: 600,
             }}
           >
             BioAge Report · {monthYear}
           </p>
           <p
             style={{
-              fontSize: "10px",
-              color: "var(--text-muted)",
-              fontFamily: "var(--font-inter)",
+              fontSize: "9px",
+              color: "rgba(255,255,255,0.3)",
+              fontFamily: FONT,
               letterSpacing: "0.1em",
             }}
           >
-            Model: PhenoAge v2.1
+            Model: PhenoAge v2.1 (Levine 2018)
           </p>
         </div>
 
         {/* Delta badge */}
         <div
           style={{
-            background: isYounger ? "var(--accent-bg)" : "#1a1525",
-            border: `1px solid ${isYounger ? "var(--accent-glow)" : "#4a3aff44"}`,
-            borderRadius: "6px",
-            padding: "6px 10px",
-            boxShadow: isYounger ? "0 0 10px var(--accent-glow)" : "0 0 10px #4a3aff44",
+            background: isYounger ? "rgba(136,119,89,0.1)" : "rgba(120,60,60,0.12)",
+            border: `1px solid ${isYounger ? "#887759" : "#7a4040"}`,
+            borderRadius: "2px",
+            padding: "6px 12px",
           }}
         >
           <p
             style={{
-              fontSize: "18px",
+              fontSize: "20px",
               fontWeight: "700",
-              color: isYounger ? "var(--accent)" : "#4a3aff",
-              fontFamily: "var(--font-inter)",
+              color: isYounger ? "#887759" : "#8a5555",
+              fontFamily: FONT,
               lineHeight: 1,
+              letterSpacing: "-0.02em",
             }}
           >
             {isYounger ? "−" : "+"}
@@ -106,40 +109,41 @@ const BioAgeCard = forwardRef<HTMLDivElement, BioAgeCardProps>(function BioAgeCa
           </p>
           <p
             style={{
-              fontSize: "9px",
-              color: "var(--text-secondary)",
-              fontFamily: "var(--font-inter)",
+              fontSize: "8px",
+              color: "rgba(255,255,255,0.4)",
+              fontFamily: FONT,
               textAlign: "center",
-              marginTop: "2px",
+              marginTop: "3px",
+              letterSpacing: "0.1em",
             }}
           >
-            yrs
+            YRS
           </p>
         </div>
       </div>
 
       {/* Hero bio age */}
-      <div className="flex items-end gap-4 mb-2">
+      <div className="flex items-end gap-5 mb-2">
         <p
           style={{
-            fontSize: "80px",
+            fontSize: "88px",
             fontWeight: "800",
             lineHeight: 1,
-            fontFamily: "var(--font-inter)",
-            letterSpacing: "-0.03em",
-            color: "var(--foreground)",
+            fontFamily: FONT,
+            letterSpacing: "-0.04em",
+            color: "#ffffff",
           }}
         >
           {phenoAge.toFixed(1)}
         </p>
         <div className="mb-3">
-          <p style={{ fontSize: "12px", color: "var(--text-muted)", fontFamily: "var(--font-inter)" }}>
+          <p style={{ fontSize: "9px", color: "rgba(255,255,255,0.35)", fontFamily: FONT, letterSpacing: "0.15em", fontWeight: 600 }}>
             BIO AGE
           </p>
-          <p style={{ fontSize: "20px", color: "var(--text-secondary)", fontFamily: "var(--font-inter)", fontWeight: "600" }}>
+          <p style={{ fontSize: "22px", color: "rgba(255,255,255,0.5)", fontFamily: FONT, fontWeight: "700", letterSpacing: "-0.02em" }}>
             {chronoAge.toFixed(0)}
           </p>
-          <p style={{ fontSize: "10px", color: "var(--text-muted)", fontFamily: "var(--font-inter)" }}>
+          <p style={{ fontSize: "9px", color: "rgba(255,255,255,0.3)", fontFamily: FONT, letterSpacing: "0.15em", fontWeight: 600 }}>
             CHRONO
           </p>
         </div>
@@ -147,18 +151,19 @@ const BioAgeCard = forwardRef<HTMLDivElement, BioAgeCardProps>(function BioAgeCa
 
       {/* Status bar */}
       <div
-        className="flex items-center gap-2 mb-6 px-3 py-2 rounded-sm"
-        style={{ background: isYounger ? "var(--accent-bg)" : "#1a0a0a" }}
+        className="flex items-center gap-2 mb-8 px-4 py-2.5"
+        style={{ background: isYounger ? "rgba(136,119,89,0.08)" : "rgba(120,60,60,0.08)" }}
       >
         <span
-          className="w-2 h-2 rounded-full flex-shrink-0"
-          style={{ background: isYounger ? "var(--accent)" : "#4a3aff" }}
+          className="w-1.5 h-1.5 rounded-full flex-shrink-0"
+          style={{ background: isYounger ? "#887759" : "#8a5555" }}
         />
         <p
           style={{
-            fontSize: "12px",
-            color: isYounger ? "var(--accent)" : "#4a3aff",
-            fontFamily: "var(--font-inter)",
+            fontSize: "11px",
+            color: isYounger ? "#887759" : "#8a5555",
+            fontFamily: FONT,
+            fontWeight: 500,
           }}
         >
           Aging {absDelta} years {isYounger ? "slower" : "faster"} than chronological
@@ -166,15 +171,16 @@ const BioAgeCard = forwardRef<HTMLDivElement, BioAgeCardProps>(function BioAgeCa
       </div>
 
       {/* Organ breakdown */}
-      <div className="mb-6">
+      <div className="mb-7">
         <p
           style={{
-            fontSize: "10px",
-            color: "var(--text-muted)",
-            letterSpacing: "0.15em",
+            fontSize: "9px",
+            color: "rgba(255,255,255,0.35)",
+            letterSpacing: "0.2em",
             textTransform: "uppercase",
-            fontFamily: "var(--font-inter)",
-            marginBottom: "12px",
+            fontFamily: FONT,
+            marginBottom: "14px",
+            fontWeight: 600,
           }}
         >
           Organ Systems
@@ -188,15 +194,16 @@ const BioAgeCard = forwardRef<HTMLDivElement, BioAgeCardProps>(function BioAgeCa
 
       {/* Active protocols */}
       {protocols.length > 0 && (
-        <div className="mb-6">
+        <div className="mb-7">
           <p
             style={{
-              fontSize: "10px",
-              color: "var(--text-muted)",
-              letterSpacing: "0.15em",
+              fontSize: "9px",
+              color: "rgba(255,255,255,0.35)",
+              letterSpacing: "0.2em",
               textTransform: "uppercase",
-              fontFamily: "var(--font-inter)",
+              fontFamily: FONT,
               marginBottom: "10px",
+              fontWeight: 600,
             }}
           >
             Active Protocols
@@ -217,14 +224,14 @@ const BioAgeCard = forwardRef<HTMLDivElement, BioAgeCardProps>(function BioAgeCa
       {/* Watermark */}
       <div
         className="pt-4"
-        style={{ borderTop: "1px solid var(--border)" }}
+        style={{ borderTop: "1px solid rgba(136,119,89,0.15)" }}
       >
         <p
           style={{
-            fontSize: "9px",
-            color: "var(--text-muted)",
+            fontSize: "8px",
+            color: "rgba(255,255,255,0.2)",
             letterSpacing: "0.2em",
-            fontFamily: "var(--font-inter)",
+            fontFamily: FONT,
             textAlign: "center",
           }}
         >

@@ -8,8 +8,9 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
-  ReferenceLine,
 } from "recharts";
+
+const FONT = "'Montserrat', system-ui, sans-serif";
 
 interface TrendDataPoint {
   date: string;
@@ -41,16 +42,16 @@ function CustomTooltip({
 
   return (
     <div
-      className="p-3 rounded-sm border text-xs"
+      className="p-3 text-xs"
       style={{
-        background: "var(--card)",
-        borderColor: "var(--border)",
-        fontFamily: "var(--font-inter)",
+        background: "#06064a",
+        border: "1px solid rgba(136,119,89,0.3)",
+        fontFamily: FONT,
       }}
     >
-      <p className="text-gray-400 mb-2">{label}</p>
+      <p style={{ color: "var(--text-muted)", marginBottom: "6px", letterSpacing: "0.06em" }}>{label}</p>
       {payload.map((p) => (
-        <p key={p.name} style={{ color: p.color }}>
+        <p key={p.name} style={{ color: p.color, fontWeight: 500 }}>
           {p.name}: {p.value.toFixed(1)}
         </p>
       ))}
@@ -62,19 +63,19 @@ export default function TrendChart({ data }: TrendChartProps) {
   if (!data || data.length === 0) {
     return (
       <div
-        className="flex items-center justify-center h-40 rounded-sm border text-sm"
+        className="flex items-center justify-center h-40 text-xs"
         style={{
-          borderColor: "var(--border)",
+          border: "1px solid var(--border)",
           color: "var(--text-muted)",
-          fontFamily: "var(--font-inter)",
+          fontFamily: FONT,
+          letterSpacing: "0.1em",
         }}
       >
-        No data yet — calculate your first score
+        NO DATA — CALCULATE YOUR FIRST SCORE
       </div>
     );
   }
 
-  // Format dates for X axis
   const formatted = data.map((d) => ({
     ...d,
     label: new Date(d.date).toLocaleDateString("en-US", {
@@ -84,17 +85,17 @@ export default function TrendChart({ data }: TrendChartProps) {
   }));
 
   return (
-    <ResponsiveContainer width="100%" height={220}>
-      <LineChart data={formatted} margin={{ top: 10, right: 20, left: -20, bottom: 0 }}>
-        <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
+    <ResponsiveContainer width="100%" height={200}>
+      <LineChart data={formatted} margin={{ top: 8, right: 16, left: -28, bottom: 0 }}>
+        <CartesianGrid strokeDasharray="2 6" stroke="rgba(255,255,255,0.04)" />
         <XAxis
           dataKey="label"
-          tick={{ fill: "var(--text-muted)", fontSize: 11, fontFamily: "var(--font-inter)" }}
-          axisLine={{ stroke: "var(--border)" }}
+          tick={{ fill: "var(--text-muted)", fontSize: 10, fontFamily: FONT }}
+          axisLine={{ stroke: "rgba(255,255,255,0.06)" }}
           tickLine={false}
         />
         <YAxis
-          tick={{ fill: "var(--text-muted)", fontSize: 11, fontFamily: "var(--font-inter)" }}
+          tick={{ fill: "var(--text-muted)", fontSize: 10, fontFamily: FONT }}
           axisLine={false}
           tickLine={false}
           domain={["auto", "auto"]}
@@ -105,7 +106,7 @@ export default function TrendChart({ data }: TrendChartProps) {
         <Line
           type="monotone"
           dataKey="chronoAge"
-          stroke="var(--text-muted)"
+          stroke="rgba(255,255,255,0.15)"
           strokeWidth={1}
           strokeDasharray="4 4"
           dot={false}
@@ -116,10 +117,10 @@ export default function TrendChart({ data }: TrendChartProps) {
         <Line
           type="monotone"
           dataKey="phenoAge"
-          stroke="var(--accent)"
+          stroke="#887759"
           strokeWidth={2}
-          dot={{ fill: "var(--accent)", r: 4, strokeWidth: 0 }}
-          activeDot={{ r: 6, fill: "var(--accent)" }}
+          dot={{ fill: "#887759", r: 3, strokeWidth: 0 }}
+          activeDot={{ r: 5, fill: "#ada03e" }}
           name="Bio Age"
         />
       </LineChart>
